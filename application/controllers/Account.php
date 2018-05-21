@@ -22,6 +22,7 @@ class Account extends CI_Controller {
         redirect('Account/profile');
     }
 
+    //Profile page
     public function profile() {
         if ($this->user_id == 0) {
             redirect('/');
@@ -71,6 +72,7 @@ class Account extends CI_Controller {
         $this->load->view('Account/profile', $data);
     }
 
+    //login page
     function login() {
         $data1['msg'] = "";
 
@@ -189,6 +191,7 @@ class Account extends CI_Controller {
         redirect('/');
     }
 
+    //orders list
     function orderList() {
         if ($this->user_id == 0) {
             redirect('/');
@@ -198,6 +201,71 @@ class Account extends CI_Controller {
         $orderlist = $query->result();
         $data['orderslist'] = $orderlist;
         $this->load->view('Account/orderList', $data);
+    }
+
+    //Address management
+    function address() {
+        $user_address_details = $this->User_model->user_address_details($this->user_id);
+        $data['user_address_details'] = $user_address_details;
+
+        //Get Address
+        if (isset($_GET['setAddress'])) {
+            $this->db->set('status', "");
+            $this->db->where('user_id', $this->user_id);
+            $this->db->update('shipping_address');
+
+            $adid = $_GET['setAddress'];
+            $this->db->set('status', "default");
+            $this->db->where('id', $adid);
+            $this->db->update('shipping_address');
+            redirect('Account/address');
+        }
+
+        //add New address
+        if (isset($_POST['add_address'])) {
+            $this->db->set('status', "");
+            $this->db->where('user_id', $this->user_id);
+            $this->db->update('shipping_address');
+
+            $category_array = array(
+                'address' => $this->input->post('address'),
+                'city' => $this->input->post('city'),
+                'state' => $this->input->post('state'),
+                'pincode' => $this->input->post('pincode'),
+                'user_id' => $this->user_id,
+                'status' => 'default',
+            );
+            $this->db->insert('shipping_address', $category_array);
+            redirect('Account/address');
+        }
+
+
+        $this->load->view('Account/address', $data);
+    }
+
+    //function credits
+    function credits() {
+        if ($this->user_id == 0) {
+            redirect('/');
+        }
+
+        $user_id = $this->user_id;
+
+        $user_credits = $this->User_model->user_credits($this->user_id);
+        $data['user_credits'] = $user_credits;
+
+        $querys = "select * from (
+                   select credit, '' as debit, order_id, remark, c_date, c_time  FROM `user_credit` where user_id = $user_id
+                    union
+                   select '' as credit, credit as debit, order_id, remark, c_date, c_time  FROM `user_debit` where user_id = $user_id
+                   ) as credit order by c_date desc";
+
+        $query = $this->db->query($querys);
+        $creditlist = $query->result();
+        $data['creditlist'] = $creditlist;
+
+
+        $this->load->view('Account/credits', $data);
     }
 
 }
