@@ -10,10 +10,10 @@
 
         <!-- CATEGORIES -->
         <ul class="cate" style="min-height: 500px">
-            <li><a href="<?php echo site_url("Account/profile");?>">Profile</a></li>
-            <li><a href="<?php echo site_url("Account/orderList");?>">My Orders</a></li>
-
-
+            <li><a href="<?php echo site_url("Account/profile"); ?>">Profile</a></li>
+            <li><a href="<?php echo site_url("Account/address"); ?>">Addresses</a></li>
+            <li><a href="<?php echo site_url("Account/orderList"); ?>">My Orders</a></li>
+            <li><a href="<?php echo site_url("Account/credits"); ?>">Credits</a></li>
         </ul>
 
 
