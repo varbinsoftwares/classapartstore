@@ -9,9 +9,9 @@
         </div>
 
         <!-- CATEGORIES -->
-        <ul class="cate">
+        <ul class="cate" style="min-height: 500px">
             <li><a href="<?php echo site_url("Account/profile");?>">Profile</a></li>
-            <li><a href="<?php echo site_url("Account/orderList");?>">Orders</a></li>
+            <li><a href="<?php echo site_url("Account/orderList");?>">My Orders</a></li>
 
 
         </ul>

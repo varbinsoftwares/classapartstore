@@ -106,17 +106,17 @@ $this->load->view('layout/header');
                             </li>
                             <li class="col-sm-12">
                                 <label>
-                                    <input type="email" name="email_mob" placeholder="Email *">
+                                    <input type="email" name="email" placeholder="Email *">
                                 </label>
                             </li>
                             <li class="col-sm-12">
                                 <label>
-                                    <input type="password" class="pass" name="pass" placeholder="Password">
+                                    <input type="password" class="pass" name="password" placeholder="Password">
                                 </label>
                             </li>
                             <li class="col-sm-12">
                                 <label>
-                                    <input type="password" class="con_pass" name="con_pass" placeholder="Confirm Password">
+                                    <input type="password" class="con_pass" name="con_password" placeholder="Confirm Password">
                                 </label>
                             </li>
                             <li class="col-sm-12">

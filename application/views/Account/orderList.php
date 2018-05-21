@@ -20,6 +20,10 @@ $this->load->view('layout/header');
         line-height: 19px!important;
         margin-right: 13px!important;
     }
+    
+    .blog-posts article {
+    margin-bottom: 10px;
+}
 </style>
 
 <section class="sub-bnr" data-stellar-background-ratio="0.5">

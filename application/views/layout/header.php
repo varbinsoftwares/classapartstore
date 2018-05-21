@@ -131,7 +131,7 @@
                                         <li class="dropdown"> <a href="contact_us_1.html" class="dropdown-toggle" data-toggle="dropdown">Hi, <?php echo $session_data['first_name'] ? $session_data['first_name'] : 'User'; ?>! </a>
                                             <ul class="dropdown-menu">
                                                 <li><a href="<?php echo site_url("Account/profile");?>">Profile</a></li>
-                                                <li><a href="<?php echo site_url("Account/orderList");?>">Order History</a></li>
+                                                <li><a href="<?php echo site_url("Account/orderList");?>">My Order</a></li>
                                                 <li><a href="<?php echo site_url("Account/logout"); ?>">Logout</a></li>
                                             </ul>
                                         </li>

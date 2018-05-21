@@ -21,13 +21,10 @@ class User_model extends CI_Model {
 
     //check user if exist in system
     function check_user($emailid) {
-        $query = $this->db->query($query);
-        if ($query->num_rows() > 0) {
-            foreach ($query->result_array() as $row) {
-                $data[] = $row;
-            }
-            return $data; //format the array into json data
-        }
+        $this->db->where('email', $emailid);
+        $query = $this->db->get('admin_users');
+        $user_details = $query->row();
+        return $user_details;
     }
 
     //end of check user5
@@ -41,9 +38,7 @@ class User_model extends CI_Model {
             return array();
         }
     }
-    
-    
-   
+
     //get user address by id
     function user_address_details($id) {
         $this->db->where('user_id', $id);
@@ -55,7 +50,6 @@ class User_model extends CI_Model {
             return array();
         }
     }
-    
 
     //get user creadit detail by id
     function user_credits($id) {
@@ -64,20 +58,20 @@ class User_model extends CI_Model {
         $query = $this->db->get('user_credit');
         $credits = 0;
         if ($query->num_rows() > 0) {
-             $credits =  $query->result_array()[0]['credits'];
-        } 
-        
+            $credits = $query->result_array()[0]['credits'];
+        }
+
         $debits = 0;
         $this->db->select('sum(credit) as credits');
         $this->db->where('user_id', $id);
         $query = $this->db->get('user_debit');
         if ($query->num_rows() > 0) {
-            $debits =  $query->result_array()[0]['credits'];
-        } 
-        
+            $debits = $query->result_array()[0]['credits'];
+        }
+
         $total = $credits - $debits;
-        
-        return ($total); 
+
+        return ($total);
     }
 
     // end of user detail by id

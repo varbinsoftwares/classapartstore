@@ -121,6 +121,57 @@ class Account extends CI_Controller {
                 //redirect('Account/login', $data1);
             }
         }
+
+        if (isset($_POST['registration'])) {
+            $email = $this->input->post('email');
+            $password = $this->input->post('password');
+            $first_name = $this->input->post('first_name');
+            $last_name = $this->input->post('last_name');
+            $cpassword = $this->input->post('con_password');
+            if ($cpassword == $password) {
+                $user_check = $this->User_model->check_user($email);
+                if ($user_check) {
+                    $data1['msg'] = 'Email Address Already Registered.';
+                } else {
+                    $userarray = array(
+                        'first_name' => $first_name,
+                        'last_name' => $last_name,
+                        'email' => $email,
+                        'password' => md5($password),
+                        'password2' => $password,
+                    );
+                    $this->db->insert('admin_users', $userarray);
+                    $user_id = $this->db->insert_id();
+
+                    $sess_data = array(
+                        'username' => $email,
+                        'first_name' => $first_name,
+                        'last_name' => $last_name,
+                        'login_id' => $user_id,
+                    );
+
+                    $session_cart = $this->session->userdata('session_cart');
+                    $productlist = $session_cart['products'];
+
+                    foreach ($productlist as $key => $value) {
+                        $quantity = $value['quantity'];
+                        $product_id = $value['product_id'];
+                        $this->Product_model->cartOperation($product_id, $quantity, $user_id, 1);
+                    }
+                    $this->session->set_userdata('logged_in', $sess_data);
+
+                    if ($link == 'checkout') {
+                        redirect('Cart/checkout');
+                    }
+
+                    redirect('Account/profile');
+                }
+            } else {
+                $data1['msg'] = 'Password did not match.';
+            }
+        }
+
+
         $this->load->view('Account/login', $data1);
     }
 

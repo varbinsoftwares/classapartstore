@@ -134,7 +134,7 @@ $this->load->view('layout/header');
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-4">  
+<!--                                    <div class="col-sm-4">  
                                         <div class="noti-check1">
                                             <h3 style="    color: #fff;"></h3>
                                             <center><img class="media-object img-responsive" src="post_image/user-default.jpg" alt="..." style="height:200px;"></center>
@@ -153,7 +153,7 @@ $this->load->view('layout/header');
                                                 </ul>
                                             </form>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                         </div>

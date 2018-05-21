@@ -76,7 +76,7 @@ class Cart extends CI_Controller {
                     'name' => $user_details->first_name . " " . $user_details->last_name,
                     'email' => $user_details->email,
                     'user_id' => $user_details->id,
-                    'contact_no' => $user_details->contact_no,
+                    'contact_no' => $user_details->contact_no?$user_details->contact_no:'---',
                     'pincode' => $address['pincode'],
                     'address' => $address['address'],
                     'city' => $address['city'],
