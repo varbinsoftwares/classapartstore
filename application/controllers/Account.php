@@ -255,9 +255,11 @@ class Account extends CI_Controller {
         $data['user_credits'] = $user_credits;
 
         $querys = "select * from (
-                   select credit, '' as debit, order_id, remark, c_date, c_time  FROM `user_credit` where user_id = $user_id
+                   select credit, '' as debit, order_id, remark, c_date, c_time  FROM `user_credit` 
+                   where user_id = $user_id and credit>0
                     union
-                   select '' as credit, credit as debit, order_id, remark, c_date, c_time  FROM `user_debit` where user_id = $user_id
+                   select '' as credit, credit as debit, order_id, remark, c_date, c_time  FROM `user_debit`
+                   where user_id = $user_id  and credit>0
                    ) as credit order by c_date desc";
 
         $query = $this->db->query($querys);
