@@ -46,13 +46,17 @@ $this->load->view('layout/header');
 
     <!-- Shop Content -->
     <div class="shop-content pad-t-b-60">
-        <div class="container" ng-if="productResults.products.length">
+        <div class="container" >
             <div class="row"> 
 
 
                 <!-- Shop Side Bar -->
-                <div class="col-md-3">
+                <div class="col-md-3" ng-if="checkproduct == 1">
                     <div class="side-bar">
+
+
+
+
                         <div class="search">
                             <form>
                                 <input type="text" placeholder="SEARCH">
@@ -88,7 +92,7 @@ $this->load->view('layout/header');
                         <!-- PRICE -->
                         <div class="cost-price-content">
                             <div id="price-range" class="price-range"></div>
-                            <span id="price-min" class="price-min">{{productResults.price.minprice}}</span> <span id="price-max" class="price-max">{{productResults.price.maxprice}}</span> <a href="#." class="btn btn-small btn-inverse pull-right" >FILTER</a> 
+                            <span id="price-min" class="price-min">{{productResults.price.minprice}}</span> <span id="price-max" class="price-max">{{productResults.price.maxprice}}</span> <a href="#." class="btn btn-small btn-inverse pull-right" ng-click="filterPrice()">FILTER</a> 
                         </div>
 
                         <div ng-repeat="(attrk, attrv) in productResults.attributes" ng-if="attrv.length > 1">
@@ -102,7 +106,7 @@ $this->load->view('layout/header');
                                 <li ng-repeat="atv in attrv">
                                     <a href="#.">
                                         <label style="font-weight: 500">
-                                            <input type="checkbox"> {{atv.attribute_value}} ({{atv.product_count}})
+                                            <input type="checkbox"  ng-model="atv.checked" ng-click="attributeProductGet(atv)">  {{atv.attribute_value}} ({{atv.product_count}})
                                         </label>
                                     </a>
 
@@ -115,14 +119,42 @@ $this->load->view('layout/header');
 
 
                 <!-- Main Shop Itesm -->
-                <div class="col-md-9"> 
+                <div class="col-md-9" ng-if="checkproduct == 1"> 
                     <!-- SHOWING INFO -->
                     <div class="showing-info">
-                        <p class="pull-left">Showing   1 - 12  of   {{productResults.product_count}} results</p>
+
+                        <div class="side-bar" style="float: left;
+                             width: 68%;padding: 0 5px">
+                            
+
+                            <ul class="tags" ng-if="pricerange.min>0" style="float: left;    float: left;
+                                border: 1px solid #eee;padding-right:10px;    margin-left: 10px;
+                                padding-top: 5px;">
+                                <li>
+                                    <a href="#." style="padding: 5px;background: #fff; margin: 0;    margin-left: 10px;">
+                                        Price Range :  {{pricerange.min}} - {{pricerange.max}}
+                                    </a>
+                                </li>
+                               
+                            </ul>
+
+                            <ul class="tags" ng-repeat="(k, attr) in attribute_checked_pre" style="float: left;    float: left;
+                                border: 1px solid #eee;padding-right:10px;    margin-left: 10px;
+                                padding-top: 5px;">
+                                <li><a href="#." style="padding: 5px;background: #fff; margin: 0;    margin-left: 10px;">{{k}}</a></li>
+                                <li ng-repeat="av in attr"> 
+                                    <a href="#." style="padding: 5px;    margin: 0;    margin-left: 10px;">{{av.attribute_value}}</a>
+                                </li>
+                            </ul>
+
+
+                        </div>
+
+                        <p class="pull-right"  ng-if="productResults.products.length">Showing {{productResults.products.length}} results</p>
                     </div>
-                    <div class="row"> 
+                    <div class="row" ng-if="productResults.products.length"> 
                         <!-- Item -->
-                        <div class="col-sm-4" ng-repeat="product in productResults.products">
+                        <div class="col-sm-4" ng-repeat="(k, product) in productResults.products">
                             <div class="productblock">
                                 <article class="shop-artical"> 
                                     <div class="product_image_back" style="background: url(<?php echo imageserver; ?>{{product.file_name}})"></div>
@@ -143,14 +175,21 @@ $this->load->view('layout/header');
                             </div>
                         </div>
                     </div>
+                    
+                    <div ng-if="!productResults.products.length">
+                        <h1 style="font-size: 40px;text-align: center;">No Product Found</h1>
+                        <p style="text-align: center;">Products Will Comming Soon</p>
+                        <hr class="dotted">
+                      
+                    </div>
 
                     <!-- Pagination -->
-                    <ul class="pagination">
+<!--                    <ul class="pagination" ng-if="productResults.products.length">
                         <li><a href="#.">1</a></li>
                         <li><a href="#.">2</a></li>
                         <li><a href="#.">....</a></li>
                         <li><a href="#.">&gt;</a></li>
-                    </ul>
+                    </ul>-->
                 </div>
 
 
@@ -160,17 +199,20 @@ $this->load->view('layout/header');
 
 
         <div id="content"  ng-if="!productResults.products.length"> 
-            <!-- Tesm Text -->
-            <section class="error-page text-center pad-t-b-130">
-                <div class="container "> 
+            <div ng-if="checkproduct == 0">
+                <!-- Tesm Text -->
+                <section class="error-page text-center pad-t-b-130">
+                    <div class="container "> 
 
-                    <!-- Heading -->
-                    <h1 style="font-size: 40px">No Product Found</h1>
-                    <p>Products Will Comming Soon</p>
-                    <hr class="dotted">
-                    <a href="<?php echo site_url(); ?>" class="btn btn-inverse">BACK TO HOME</a>
-                </div>
-            </section>
+                        <!-- Heading -->
+                        <h1 style="font-size: 40px">No Product Found</h1>
+                        <p>Products Will Comming Soon</p>
+                        <hr class="dotted">
+                        <a href="<?php echo site_url(); ?>" class="btn btn-inverse">BACK TO HOME</a>
+                    </div>
+                </section>
+            </div>
+
         </div>
 
     </div>

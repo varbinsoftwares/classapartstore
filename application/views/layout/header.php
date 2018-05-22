@@ -72,6 +72,18 @@
             var baseurl = "<?php echo base_url(); ?>index.php/";
             var avaiblecredits = 0;
         </script>
+        
+        <style>
+            .ownmenu .dropdown.megamenu .dropdown-menu li:last-child{
+                margin-bottom: 20px;
+            }
+            
+             .ownmenu .dropdown.megamenu .dropdown-menu li a{
+               line-height: 25px;
+            }
+                
+        </style>
+        
 
         <!-- Page Wrapper -->
         <div id="wrap" class="shop-page" ng-controller="ShopController"> 
@@ -105,14 +117,15 @@
                                         <div class="dropdown-menu">
                                             <div class="mega-inside">
                                                 <div class="row">
-                                                    <div class="col-sm-3" ng-repeat="catv in categoriesMenu">
-                                                        <h6>
+                                                    <div class="col-sm-3" ng-repeat="catv in categoriesMenu" >
+                                                        <h6 style="margin-bottom: 0px">
                                                             <a href="<?php echo site_url("Product/ProductList/"); ?>{{catv.id}}" >{{catv.category_name}}</a>
                                                         </h6>
                                                         <ul>
                                                             <li ng-repeat="subv in catv.sub_category">
                                                                 <a href="<?php echo site_url("Product/ProductList/"); ?>{{subv.id}}" >{{subv.category_name}}</a>
                                                             </li>
+                                                            <li></li>
                                                         </ul>
                                                     </div>
 
