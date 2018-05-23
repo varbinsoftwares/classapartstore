@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $baselink = 'http://'.$_SERVER['SERVER_NAME'];
 
-$baselinkmain = strpos($baselink, '192.168') ? $baselink.'/classApartStoreAdmin/' : $baselink.'/classApartStoreAdmin/';
+$baselinkmain = strpos($baselink, '192.168') ? $baselink.'/classApartStoreAdmin/' : 'http://manage.classapartstore.com/';
 define('imageserver', $baselinkmain."assets_main/productimages/");
 
 /*
