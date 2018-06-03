@@ -151,7 +151,7 @@
                                     </li>
                                     <li>
                                         <div class="cart-area">
-                                            <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span>{{globleCartData.total_quantity}}</span></a>
+                                            <a href="#"><i class="fa fa-shopping-cart"  aria-hidden="true"></i><span style="background: #f01211">{{globleCartData.total_quantity}}</span></a>
                                             <ul>
                                                 <li  ng-repeat="product in globleCartData.products">
                                                     <!--                                                    <div class="cart-single-product">
