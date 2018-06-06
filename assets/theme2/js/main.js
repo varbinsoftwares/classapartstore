@@ -172,31 +172,31 @@
     /*-------------------------------------
      Input Quantity Up & Down activation code
      -------------------------------------*/
-    $('#quantity-holder,#quantity-holder2').on('click', '.quantity-plus', function() {
-
-        var $holder = $(this).parents('.quantity-holder');
-        var $target = $holder.find('input.quantity-input');
-        var $quantity = parseInt($target.val(), 10);
-        if ($.isNumeric($quantity) && $quantity > 0) {
-            $quantity = $quantity + 1;
-            $target.val($quantity);
-        } else {
-            $target.val($quantity);
-        }
-
-    }).on('click', '.quantity-minus', function() {
-
-        var $holder = $(this).parents('.quantity-holder');
-        var $target = $holder.find('input.quantity-input');
-        var $quantity = parseInt($target.val(), 10);
-        if ($.isNumeric($quantity) && $quantity >= 2) {
-            $quantity = $quantity - 1;
-            $target.val($quantity);
-        } else {
-            $target.val(1);
-        }
-
-    });
+//    $('#quantity-holder,#quantity-holder2').on('click', '.quantity-plus', function() {
+//
+//        var $holder = $(this).parents('.quantity-holder');
+//        var $target = $holder.find('input.quantity-input');
+//        var $quantity = parseInt($target.val(), 10);
+//        if ($.isNumeric($quantity) && $quantity > 0) {
+//            $quantity = $quantity + 1;
+//            $target.val($quantity);
+//        } else {
+//            $target.val($quantity);
+//        }
+//
+//    }).on('click', '.quantity-minus', function() {
+//
+//        var $holder = $(this).parents('.quantity-holder');
+//        var $target = $holder.find('input.quantity-input');
+//        var $quantity = parseInt($target.val(), 10);
+//        if ($.isNumeric($quantity) && $quantity >= 2) {
+//            $quantity = $quantity - 1;
+//            $target.val($quantity);
+//        } else {
+//            $target.val(1);
+//        }
+//
+//    });
 
     /*-------------------------------------
      Select2 activation code

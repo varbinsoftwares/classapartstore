@@ -103,7 +103,6 @@
     </div>
 </footer>
 <!-- Footer Area End Here -->
-</div>
 <!-- Modal Dialog Box Start Here-->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -112,35 +111,53 @@
             <div class="product-details1-area">
                 <div class="product-details-info-area">
                     <div class="row">
-                        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <div class="inner-product-details-left">
                                 <div class="tab-content">
-                                    <div id="metro-related1" class="tab-pane fade active in">
-                                        <a href="#"><img class="img-responsive" src="img/product/product-details1.jpg" alt="single"></a>
+                                    <div id="metro-related1" class="tab-pane fade active in" ng-if="projectDetailsModel.productobj.file_name">
+                                        <a href="#">
+                                            <div class="product_image_back" style="background: url(<?php echo imageserver; ?>{{projectDetailsModel.productobj.file_name}});width:275px;height: 275px"></div>
+                                            <!--<img class="img-responsive" src="<?php echo imageserver; ?>/{{projectDetailsModel.productobj.file_name}}" alt="single">-->
+                                        </a>
                                     </div>
-                                    <div id="metro-related2" class="tab-pane fade">
-                                        <a href="#"><img class="img-responsive" src="img/product/product-details1.jpg" alt="single"></a>
+                                    <div id="metro-related2" class="tab-pane fade" ng-if="projectDetailsModel.productobj.file_name1">
+                                        <a href="#">
+                                            <div class="product_image_back" style="background: url(<?php echo imageserver; ?>{{projectDetailsModel.productobj.file_name1}});width:275px;height: 275px"></div>
+                                            <!--<img class="img-responsive" src="<?php echo imageserver; ?>/{{projectDetailsModel.productobj.file_name1}}" alt="single">-->
+                                        </a>
                                     </div>
-                                    <div id="metro-related3" class="tab-pane fade">
-                                        <a href="#"><img class="img-responsive" src="img/product/product-details1.jpg" alt="single"></a>
+                                    <div id="metro-related3" class="tab-pane fade" ng-if="projectDetailsModel.productobj.file_name2">
+                                        <a href="#">
+                                            <div class="product_image_back" style="background: url(<?php echo imageserver; ?>{{projectDetailsModel.productobj.file_name2}});width:275px;height: 275px"></div>
+                                            <!--<img class="img-responsive" src="<?php echo imageserver; ?>/{{projectDetailsModel.productobj.file_name2}}" alt="single">-->
+                                        </a>
                                     </div>
                                 </div>
                                 <ul>
-                                    <li class="active">
-                                        <a aria-expanded="false" data-toggle="tab" href="#metro-related1"><img class="img-responsive" src="img/product/product-details4.jpg" alt="related1"></a>
+                                    <li class="active" ng-if="projectDetailsModel.productobj.file_name">
+                                        <a aria-expanded="false" data-toggle="tab" href="#metro-related1">
+                                            <div class="product_image_back" style="background: url(<?php echo imageserver; ?>{{projectDetailsModel.productobj.file_name}});width:75px;height: 75px"></div>
+                                            <!--<img class="img-responsive" src="<?php echo imageserver; ?>/{{projectDetailsModel.productobj.file_name}}" alt="related1">-->
+                                        </a>
                                     </li>
-                                    <li>
-                                        <a aria-expanded="false" data-toggle="tab" href="#metro-related2"><img class="img-responsive" src="img/product/product-details4.jpg" alt="related2"></a>
+                                    <li ng-if="projectDetailsModel.productobj.file_name1">
+                                        <a aria-expanded="false" data-toggle="tab" href="#metro-related2">
+                                            <div class="product_image_back" style="background: url(<?php echo imageserver; ?>{{projectDetailsModel.productobj.file_name1}});width:75px;height: 75px"></div>
+                                            <!--<img class="img-responsive" src="<?php echo imageserver; ?>/{{projectDetailsModel.productobj.file_name1}}" alt="related2">-->
+                                        </a>
                                     </li>
-                                    <li>
-                                        <a aria-expanded="false" data-toggle="tab" href="#metro-related3"><img class="img-responsive" src="img/product/product-details4.jpg" alt="related3"></a>
+                                    <li ng-if="projectDetailsModel.productobj.file_name2">
+                                        <a aria-expanded="false" data-toggle="tab" href="#metro-related3">
+                                            <div class="product_image_back" style="background: url(<?php echo imageserver; ?>{{projectDetailsModel.productobj.file_name2}});width:75px;height: 75px"></div>
+                                            <!--<img class="img-responsive" src="<?php echo imageserver; ?>/{{projectDetailsModel.productobj.file_name2}}" alt="related3">-->
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <div class="inner-product-details-right">
-                                <h3>Product Title Here</h3>
+                                <h3>{{projectDetailsModel.productobj.title}}</h3>
                                 <ul>
                                     <li><i aria-hidden="true" class="fa fa-star"></i></li>
                                     <li><i aria-hidden="true" class="fa fa-star"></i></li>
@@ -148,32 +165,32 @@
                                     <li><i aria-hidden="true" class="fa fa-star"></i></li>
                                     <li><i aria-hidden="true" class="fa fa-star"></i></li>
                                 </ul>
-                                <p class="price">$59.00</p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tinc amet risus consectetur, non consectetur nisl finibus. Ut ac eros quis mi volutpat cursus vel non risus.</p>
+                                <p class="price">{{projectDetailsModel.productobj.price|currency:"<?php echo globle_currency; ?> "}}</p>
+                                <p>{{projectDetailsModel.productobj.short_description}}</p>
                                 <div class="product-details-content">
-                                    <p><span>SKU:</span> 0010</p>
-                                    <p><span>Availability:</span> In stock</p>
-                                    <p><span>Category:</span> Demo Products</p>
+                                    <p><span>SKU:</span> {{projectDetailsModel.productobj.sku}}</p>
+                                    <p><span>Availability:</span> {{projectDetailsModel.productobj.stock_status}}</p>
+                                    <!--<p><span>Category:</span>  {{projectDetailsModel.productobj.stock_status}}</p>-->
                                 </div>
-                                <ul class="product-details-social">
-                                    <li>Share:</li>
-                                    <li><a href="#"><i aria-hidden="true" class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i aria-hidden="true" class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i aria-hidden="true" class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="#"><i aria-hidden="true" class="fa fa-pinterest"></i></a></li>
-                                </ul>
+                                <!--                                <ul class="product-details-social">
+                                                                    <li>Share: {{projectDetailsModel.quantity}}</li>
+                                                                    <li><a href="#"><i aria-hidden="true" class="fa fa-facebook"></i></a></li>
+                                                                    <li><a href="#"><i aria-hidden="true" class="fa fa-twitter"></i></a></li>
+                                                                    <li><a href="#"><i aria-hidden="true" class="fa fa-linkedin"></i></a></li>
+                                                                    <li><a href="#"><i aria-hidden="true" class="fa fa-pinterest"></i></a></li>
+                                                                </ul>-->
                                 <ul class="inner-product-details-cart">
-                                    <li><a href="#">Add To Cart</a></li>
+                                    <li><a href="#" ng-click="addToCart(projectDetailsModel.productobj.product_id, projectDetailsModel.quantity)">Add To Cart</a></li>
                                     <li>
                                         <div class="input-group quantity-holder" id="quantity-holder">
-                                            <input type="text" placeholder="1" value="1" class="form-control quantity-input" name="quantity">
+                                            <input type="text" placeholder="1" value="1" id="model_quantity" class="form-control quantity-input" name="quantity">
                                             <div class="input-group-btn-vertical">
-                                                <button type="button" class="btn btn-default quantity-plus"><i aria-hidden="true" class="fa fa-plus"></i></button>
-                                                <button type="button" class="btn btn-default quantity-minus"><i aria-hidden="true" class="fa fa-minus"></i></button>
+                                                <button type="button" class="btn btn-default quantity-plus" ng-click="modelProductQuantity()"><i aria-hidden="true" class="fa fa-plus"></i></button>
+                                                <button type="button" class="btn btn-default quantity-minus"  ng-click="modelProductQuantity()"><i aria-hidden="true" class="fa fa-minus"></i></button>
                                             </div>
                                         </div>
                                     </li>
-                                    <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                    <!--<li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>-->
                                 </ul>
                             </div>
                         </div>
@@ -181,11 +198,13 @@
                 </div>
             </div>
         </div>
-        <div class="modal-footer">
-            <a href="#" class="btn-services-shop-now" data-dismiss="modal">Close</a>
-        </div>
+        <!--        <div class="modal-footer">
+                    <a href="#" class="btn-services-shop-now" data-dismiss="modal">Close</a>
+                </div>-->
     </div>
 </div>
+</div>
+
 <!-- Modal Dialog Box End Here-->
 <!-- Preloader Start Here -->
 <div id="preloader"></div>
@@ -215,6 +234,8 @@
 <script src="<?php echo base_url(); ?>assets/theme2/js/jquery.scrollUp.min.js" type="text/javascript"></script>
 <!-- Isotope js -->
 <script src="<?php echo base_url(); ?>assets/theme2/js/isotope.pkgd.min.js" type="text/javascript"></script>
+<!-- Select2 Js -->
+<script src="<?php echo base_url(); ?>assets/theme2/js/select2.min.js" type="text/javascript"></script>
 <!-- Custom Js -->
 <script src="<?php echo base_url(); ?>assets/theme2/js/main.js" type="text/javascript"></script>
 </body>

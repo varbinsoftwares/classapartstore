@@ -8,13 +8,7 @@ $this->load->view('layout/header');
         padding: 6px;
         color: #fff!important;
     }
-    .noti-check1{
-        background: #f5f5f5;
-        padding: 25px 30px;
-        color: red;
-        font-weight: 600;
-        margin-bottom: 30px;
-    }
+
 
     .noti-check1 span{
         color: red;
@@ -34,7 +28,8 @@ $this->load->view('layout/header');
         background: #fff;
         border: 3px solid #d30603;
         padding: 5px 10px;
-        height: 150px;
+        margin-bottom: 20px;
+
     }
     .checkcart {
         border-radius: 50%;
@@ -60,10 +55,9 @@ $this->load->view('layout/header');
     }
 
     .address_button{
-        padding: 4px;
-        bottom: 10px;
-        position: absolute;
-        color: white;
+        padding: 0px 10px;
+        margin-top: 15px;
+        font-size: 10px;
     }
 
     .cartdetail_small {
@@ -78,149 +72,129 @@ $this->load->view('layout/header');
 
 
 
-<!-- Slider -->
-<section class="sub-bnr" data-stellar-background-ratio="0.5">
-    <div class="position-center-center">
-        <div class="container">
-            <h4>Checkout</h4>
-
-            <!-- Breadcrumb -->
-            <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Checkout</li>
-            </ol>
+<!-- Inner Page Banner Area Start Here -->
+<div class="inner-page-banner-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcrumb-area">
+                    <h1>Checkout</h1>
+                    <ul>
+                        <li><a href="#">Home</a> /</li>
+                        <li>Checkout</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-</section>
+</div>
+<!-- Inner Page Banner Area End Here -->
 
 <!-- Content -->
 <div id="content" ng-if="globleCartData.total_quantity"> 
     <!-- Shop Content -->
-    <section class="shop-content pad-t-b-60">
+    <section class="shop-content pad-t-b-60 checkout-page-area">
         <div class="container"> 
             <!-- Checkout -->
             <div class="checkout-form">
                 <div class="row"> 
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <!-- Login Details -->
                         <div class="col-md-12">
-                            <div class="">
-                                <h6>Contact Details</h6>
-                            </div>
-                            <div class="noti-check1" style="#f5f5f5">  
-                                <div >
-                                    <h6><span>Email</span> <?php echo $user_details->email; ?> </h6>
-                                    <h6><span>Name</span> <?php echo $user_details->first_name; ?> <?php echo $user_details->last_name; ?></h6>
-                                    <h6><span>Contact No.</span> <?php echo $user_details->contact_no; ?> </h6>
 
-                                </div>
+                            <div class="order-sheet">
+                                <h2>Contact Details</h2>
+                                <ul>
+                                    <li>Email<span><?php echo $user_details->email; ?></span></li>
+                                    <li>Name<span><?php echo $user_details->first_name; ?> <?php echo $user_details->last_name; ?></span></li>
+                                    <li>Contact No.<span><?php echo $user_details->contact_no; ?></span></li>
+                                </ul>
                             </div>
+
                         </div>
 
                         <hr/>
                         <!-- Address Details -->
                         <div class="col-md-12">
-                            <div class="">
-                                <h6>Shipping Details <button class="btn btn-small" data-toggle="modal" data-target="#changeAddress" style="margin-left: 20px;padding: 5px 11px;color:white;"><i class="fa fa-plus"></i> Add New</button></h6>
-                            </div>
-                            <div class="noti-check1" style="#f5f5f5">  
-                                <div class="row">
-                                    <?php
-                                    if (count($user_address_details)) {
-                                        ?>
+                            <div class="order-sheet">
+                                <h2 style="margin-bottom: 50px;">Shipping Details <button class="btn-send-message" data-toggle="modal" data-target="#changeAddress" style="margin-left: 20px;padding: 5px 11px;color:white;"><i class="fa fa-plus"></i> Add New</button></h2>
+
+                                <div class="noti-check1" style="#f5f5f5">  
+                                    <div class="row">
+
+
+
+
                                         <?php
-                                        foreach ($user_address_details as $key => $value) {
+                                        if (count($user_address_details)) {
                                             ?>
-                                            <div class="col-md-6">
-                                                <?php if ($value['status'] == 'default') { ?> 
-                                                    <div class="checkcart <?php echo $value['status']; ?> ">
-                                                        <i class="fa fa-check fa-2x"></i>
-                                                    </div>
-                                                <?php } ?> 
-                                                <div class=" address_block <?php echo $value['status']; ?> ">
-                                                    <p>
-                                                        <?php echo $value['address']; ?>,<br/>
-                                                        <?php echo $value['city']; ?>, <?php echo $value['state']; ?> <?php echo $value['pincode']; ?>
-                                                    </p>
-                                                    <?php if ($value['status'] != 'default') { ?> 
-                                                        <a href="<?php echo site_url("Cart/checkout/?setAddress=" . $value['id']); ?>" class="btn btn-small address_button">Select Address</a>
+                                            <?php
+                                            foreach ($user_address_details as $key => $value) {
+                                                ?>
+                                                <div class="col-md-12">
+                                                    <?php if ($value['status'] == 'default') { ?> 
+                                                        <div class="checkcart <?php echo $value['status']; ?> ">
+                                                            <i class="fa fa-check fa-2x"></i>
+                                                        </div>
                                                     <?php } ?> 
+                                                    <div class=" address_block <?php echo $value['status']; ?> ">
+                                                        <p>
+                                                            <?php echo $value['address']; ?>,<br/>
+                                                            <?php echo $value['city']; ?>, <?php echo $value['state']; ?> <?php echo $value['pincode']; ?>
+                                                            <br/>
+                                                            <?php if ($value['status'] != 'default') { ?> 
+                                                                <a href="<?php echo site_url("Cart/checkout/?setAddress=" . $value['id']); ?>" class="btn-send-message address_button btn-small ">Select Address</a>
+                                                            <?php } ?> 
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                <?php
+                                            }
+                                        } else {
+                                            ?>
+                                            <h4><i class="fa fa-warning"></i> Please Add Shipping Address</h4>
+
                                             <?php
                                         }
-                                    } else {
                                         ?>
-                                        <h4><i class="fa fa-warning"></i> Please Add Shipping Address</h4>
+                                    </div>                            
 
-                                        <?php
-                                    }
-                                    ?>
-                                </div>                            
-
+                                </div>
                             </div>
                         </div>
 
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-6">
                         <form action="#" method="post">
 
-                            <div class="col-sm-12">
 
-                                <table class="table table-condensed">
-                                    <thead>
-                                        <tr class="active">
-                                            <th>Product</th>
-                                            <th>total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <tr  ng-repeat="product in globleCartData.products">
-                                            <td>
-                                                <span class="cartdetail_small">{{product.title}}<br/>Credit Limit : {{product.credit_limit|currency:" "}}</span>  X  {{product.quantity}}
-                                            </td>
-                                            <td>
-                                                {{product.total_price|currency:" "}}<br/>
-                                               
-                                            </td>
-                                        </tr>
-                                        <tr >
-                                            <td>
-                                                Applicable Credit Limit 
-                                            </td>
-                                            <td>
-                                                {{globleCartData.total_credit_limit}}<br/>
-                                               
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                    <thead class="totl">
-                                        <tr style="    background: #07cd00;
-                                            color: #fff;">
-
-
-                                            <td style="line-height: 42px;">Available Credits:{{<?php echo $user_credits; ?>|currency:" "}}</td>
-                                            <td>
-                                                <input type="number" 
-                                                       ng-change="checkOrderTotal()"
-                                                       max="{{globleCartData.total_credit_limit}}" 
-                                                       min="0" 
-                                                       name="credit_price"
-                                                       class="form-control" 
-                                                       ng-model="globleCartData.used_credit" 
-                                                       value="{{globleCartData.used_credit}}" 
-                                                       style="width: 100px">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>Total</th>
-                                            <th>{{globleCartData.grand_total|currency:" "}}</th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                            <div class="order-sheet">
+                                <h2>Your Order</h2>
+                                <ul>
+                                    <li  ng-repeat="product in globleCartData.products">         
+                                        {{product.title}}<br/>
+                                        <b>Credit Limit : {{product.credit_limit|currency:" "}} X  {{product.quantity}}</b>
+                                        <span>{{product.total_price|currency:" "}}</span></li>
+                                </ul>
+                                <h3>Subtotal<span>{{globleCartData.total_price|currency:" "}}</span></h3>
+                                <ul>
+                                    <li class="availble_credit"> Applicable Credit Limit <span> {{globleCartData.total_credit_limit}}</span></li>
+                                    <li>Available Credits:{{<?php echo $user_credits; ?>|currency:" "}} <span><input type="number" 
+                                                                                                                     ng-change="checkOrderTotal()"
+                                                                                                                     max="{{globleCartData.total_credit_limit}}" 
+                                                                                                                     min="0" 
+                                                                                                                     name="credit_price"
+                                                                                                                     class="form-control" 
+                                                                                                                     ng-model="globleCartData.used_credit" 
+                                                                                                                     value="{{globleCartData.used_credit}}" 
+                                                                                                                     style="width: 100px"></span>
+                                    </li>
+                                </ul>
+                                <h3>Total<span>{{globleCartData.grand_total|currency:" "}}</span></h3>
                             </div>
+
+
+
                             <input type="hidden" value="{{globleCartData.total_price}}" name="sub_total_price">
                             <input type="hidden" value="{{globleCartData.total_quantity}}" name="total_quantity">
                             <input type="hidden" value="{{globleCartData.grand_total}}" name="total_price">
@@ -234,9 +208,14 @@ $this->load->view('layout/header');
                                 <?php
                                 if (count($user_address_details)) {
                                     ?>
-
-                                    <button type="submit" name="place_order" class="btn btn-inverse"> Place Order</button> </div>
-                            <?php } ?>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="pLace-order">
+                                                <button class="btn-send-message disabled" type="submit" name="place_order" >PLace Order</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
                         </form>
                     </div>
                 </div>
@@ -247,7 +226,7 @@ $this->load->view('layout/header');
 <!-- End Content --> 
 
 <!-- Content -->
-<div id="content"  ng-if="!globleCartData.total_quantity"> 
+<div id="content" class="cart-page-area"  ng-if="!globleCartData.total_quantity"> 
     <!-- Tesm Text -->
     <section class="error-page text-center pad-t-b-130">
         <div class="container "> 
@@ -257,7 +236,7 @@ $this->load->view('layout/header');
             <p>Please add product to cart<br>
                 You can go back to</p>
             <hr class="dotted">
-            <a href="<?php echo site_url(); ?>" class="btn btn-inverse">BACK TO HOME</a>
+            <a href="<?php echo site_url(); ?>" class="btn-send-message ">BACK TO HOME</a>
         </div>
     </section>
 </div>
@@ -314,7 +293,7 @@ $this->load->view('layout/header');
 <!--angular controllers-->
 <script src="<?php echo base_url(); ?>assets/theme/angular/productController.js"></script>
 <script>
-    var avaiblecredits =<?php echo $user_credits; ?>;
+        var avaiblecredits =<?php echo $user_credits; ?>;
 </script>
 
 <?php

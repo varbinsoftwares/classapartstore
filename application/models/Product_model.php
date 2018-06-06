@@ -88,13 +88,87 @@ class Product_model extends CI_Model {
         return $container;
     }
 
+    function singleProductAttrs($product_id) {
+        $query = "SELECT pa.attribute, pa.product_id, pa.attribute_value_id, cav.attribute_value FROM product_attribute as pa 
+join category_attribute_value as cav on cav.id = pa.attribute_value_id
+where pa.product_id = $product_id group by attribute_value_id";
+        $product_attr_value = $this->query_exe($query);
+        $arrayattr = [];
+        foreach ($product_attr_value as $key => $value) {
+            $attrk = $value['attribute'];
+           $attrv = $value['attribute_value'];
+            array_push($arrayattr, $attrk.'-'.$attrv);
+        }
+        return implode(", ", $arrayattr);
+    }
+
     //product Details
     function productDetails($product_id) {
         $this->db->where('id', $product_id);
         $query = $this->db->get('products');
         $product = $query->result_array();
         if (count($product)) {
-            return $product[0];
+            $productobj = $product[0];
+            $productattr = $this->singleProductAttrs($productobj['id']);
+            $productobj['attrs'] = $productattr;
+            return $productobj;
+        } else {
+            return FALSE;
+        }
+    }
+
+    function getProductVeriants($product_id) {
+        $this->db->select("id as product_id");
+        $this->db->where('variant_product_of', $product_id);
+        $query = $this->db->get('products');
+        $product_veriant = $query->result_array();
+        return $product_veriant;
+    }
+
+    //product veriants
+    function productDetailsVariants($product_id) {
+        $product_veriant = $this->getProductVeriants($product_id);
+        $mproduct_id = $product_id;
+        if (count($product_veriant)) {
+            
+        } else {
+            $this->db->select("variant_product_of as product_id");
+            $this->db->where('id', $product_id);
+            $query = $this->db->get('products');
+            $productvcs = $query->row();
+            $mproduct_id = $productvcs->product_id;
+            if ($mproduct_id) {
+                $product_veriant = $this->getProductVeriants($mproduct_id);
+            } else {
+                $mproduct_id = $product_id;
+                $product_veriant = [];
+            }
+        }
+
+        $mproduct_id;
+        $productvstr = [$mproduct_id];
+        foreach ($product_veriant as $key => $value) {
+            array_push($productvstr, $value['product_id']);
+        }
+
+        $productatrvalue = implode(", ", $productvstr);
+        $query = "SELECT pa.attribute, pa.product_id, pa.attribute_value_id, cav.attribute_value FROM product_attribute as pa 
+join category_attribute_value as cav on cav.id = pa.attribute_value_id
+where pa.product_id in ($productatrvalue) group by attribute_value_id";
+        $product_attr_value = $this->query_exe($query);
+
+
+        $product_attrs = array();
+        foreach ($product_attr_value as $key => $value) {
+            $attrv = $value['attribute'];
+            if (isset($product_attrs[$attrv])) {
+                array_push($product_attrs[$attrv], $value);
+            } else {
+                $product_attrs[$attrv] = [$value];
+            }
+        }
+        if (count($product_attrs)) {
+            return $product_attrs;
         } else {
             return FALSE;
         }
@@ -147,19 +221,16 @@ class Product_model extends CI_Model {
         }
     }
 
+    //get order details  
     public function getOrderDetails($key_id, $is_key = 0) {
         $order_data = array();
-
         if ($is_key === 'key') {
             $this->db->where('order_key', $key_id);
         } else {
-
             $this->db->where('id', $key_id);
         }
         $query = $this->db->get('user_order');
         $order_details = $query->row();
-
-
         if ($order_details) {
             $order_data['order_data'] = $order_details;
             $this->db->where('order_id', $order_details->id);
@@ -168,7 +239,6 @@ class Product_model extends CI_Model {
             $order_data['cart_data'] = $cart_items;
             $order_data['amount_in_word'] = $this->convert_num_word($order_data['order_data']->total_price);
         }
-
         return $order_data;
     }
 
@@ -322,11 +392,11 @@ class Product_model extends CI_Model {
     }
 
     function product_home_slider_bottom() {
-        $pquery = "SELECT pa.* FROM products as pa where home_slider = 'on'";
+        $pquery = "SELECT pa.* FROM products as pa where home_slider = 'on' and variant_product_of<1";
         $product_home_slider = $this->query_exe($pquery);
 
 
-        $pquery = "SELECT pa.* FROM products as pa where home_bottom = 'on'";
+        $pquery = "SELECT pa.* FROM products as pa where home_bottom = 'on'  and variant_product_of<1";
         $product_home_bottom = $this->query_exe($pquery);
 
         return array('home_bottom' => $product_home_bottom, 'home_slider' => $product_home_slider);
@@ -430,7 +500,7 @@ class Product_model extends CI_Model {
                     'vendor_order_no' => $vendor_order,
                     'vendor_id' => $value['vendor']->id,
                     'vendor_email' => $value['vendor']->email,
-                    'vendor_name'=>$value['vendor']->first_name ." ". $value['vendor']->last_name,
+                    'vendor_name' => $value['vendor']->first_name . " " . $value['vendor']->last_name,
                     'status' => "Order Generated",
                     'remark' => "Vendor Order Generated",
                 );

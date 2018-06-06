@@ -1,45 +1,27 @@
 <?php
 $this->load->view('layout/header');
 ?>
-
-<style>
-    .cartbutton{
-        width: 100%;
-        padding: 6px;
-        color: #fff!important;
-    }
-</style>
-
-
-
-
-
-
-<!-- Slider -->
-<section class="sub-bnr" data-stellar-background-ratio="0.5">
-    <div class="position-center-center">
-        <div class="container">
-            <h4>Login/Registration</h4>
-
-            <!-- Breadcrumb -->
-            <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-            
-            </ol>
+<!-- Inner Page Banner Area Start Here -->
+<div class="inner-page-banner-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcrumb-area">
+                    <h1>My Account</h1>
+                    <ul>
+                        <li><a href="#">Home</a> /</li>
+                        <li>Account</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-</section>
-
-
-
-
-
-<div class="container"> 
-    <!-- Checkout -->
-    <div class="checkout-form pad-t-b-60" >
-
-        <div class="row"> 
-            <!-- Checkout Form -->
+</div>
+<!-- Inner Page Banner Area End Here -->
+<!-- Login Registration Page Area Start Here -->
+<div class="login-registration-page-area">
+    <div class="container">
+        <div class="row">
             <?php
             if ($msg) {
                 ?>
@@ -52,92 +34,45 @@ $this->load->view('layout/header');
                 <?php
             }
             ?>
-
-
-            <div class="col-sm-6">
-                <div class="noti-check">
-                    <h3 style="    color: #fff;">Welcome Back</h3> 
-                    <div id="login" style="">
-                        <form class="create_account_form" method="post" action="#">
-                            <p>If you have registered with us before, please enter your details in the boxes below. If you are a new user, please proceed to the registration &amp; Registration section. </p>
-                            <ul class="row">
-                                <li class="col-sm-12">
-                                    <label>
-                                        <input type="email" name="email" placeholder="Email " required="">
-                                    </label>
-                                </li>
-                                <li class="col-sm-12">
-                                    <label>
-                                        <input type="password" name="password" placeholder="Password *" required="">
-                                    </label>
-                                </li>
-                                <li class="col-sm-6">
-                                    <button class="btn" type="submit" name="signIn">LOGIN</button>
-                                </li>
-                                <li class="col-sm-6 text-right">
-                                    <a href="#." class="lst-pass">Lost your password?</a> 
-                                </li>
-                            </ul>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-sm-6 ">
-                <div class="noti-check">
-                    <h3 style="    color: #fff;">New User Registration </h3> 
-
-                    <form class="create_account_form" method="post" action="#">
-                        <p>
-                            By creating an account with our website, you will be able to view and get our best deals and offers.
-                        </p>
-
-                        <ul class="row">
-                            <li class="col-sm-12">
-                                <label>
-                                    <input type="text" name="first_name" placeholder="First Name *">
-                                </label>
-                            </li>
-                            <li class="col-sm-12">
-                                <label>
-                                    <input type="text" name="last_name" placeholder="Last Name *">
-                                </label>
-                            </li>
-                            <li class="col-sm-12">
-                                <label>
-                                    <input type="email" name="email" placeholder="Email *">
-                                </label>
-                            </li>
-                            <li class="col-sm-12">
-                                <label>
-                                    <input type="password" class="pass" name="password" placeholder="Password">
-                                </label>
-                            </li>
-                            <li class="col-sm-12">
-                                <label>
-                                    <input type="password" class="con_pass" name="con_password" placeholder="Confirm Password">
-                                </label>
-                            </li>
-                            <li class="col-sm-12">
-                                <label>
-                                    <button name="registration" type="submit" class="registration btn e">Create An Account</button>
-
-                                </label>
-                            </li>
-
-                        </ul>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="login-registration-field">
+                    <h2 class="cart-area-title">Login</h2>
+                    <form method="post" action="#">
+                        <label>Email address *</label>
+                        <input type="email" name="email" placeholder="Email " required=""/>
+                        <label>Password *</label>
+                        <input type="password" name="password" placeholder="Password *" required=""/>
+                        <label class="check">Lost your password?</label>
+                        <button class="btn-send-message disabled" name="signIn" type="submit" value="signIn">Login</button>
+                        <!--<span><input type="checkbox" name="remember"/>Remember Me</span>-->
                     </form>
                 </div>
             </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="login-registration-field">
+                    <h2 class="cart-area-title">Register</h2>
+                    <form>
+                        <label>First Name *</label>
+                        <input type="text" name="first_name" placeholder="First Name *">
+                        <label>Last Name *</label>
+                        <input type="text" name="last_name" placeholder="Last Name *">
+                        <label>Email address *</label>
+                        <input type="email" name="email" placeholder="Email *">
+                        <label>Password *</label>
+                        <input type="password" class="pass" name="password" placeholder="Password">
+                         <label>Confirm Password *</label>
+                        <input type="password" class="con_pass" name="con_password" placeholder="Confirm Password">
 
 
+
+                        <button class="btn-send-message disabled" type="submit" value="Login">Register</button>
+                    </form>
+                </div>
+            </div>
         </div>
-
     </div>
 </div>
-
-
+<!-- Login Registration Page Area End Here -->
 
 <!--angular controllers-->
 <script src="<?php echo base_url(); ?>assets/theme/angular/productController.js"></script>

@@ -1,8 +1,6 @@
 /* 
  Shop Cart product controllers
  */
-
-
 ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, $interval, $filter) {
     var globlecart = baseurl + "Api/cartOperation";
     $scope.product_quantity = 1;
@@ -31,8 +29,23 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
     }
 
     //update cart
-    $scope.updateCart = function (product_id, quantity) {
-        $http.put(globlecart + "/" + product_id + "/" + quantity).then(function (rdata) {
+    $scope.updateCart = function (productobj, oper) {
+        if (oper == 'sub') {
+            if (productobj.quantity == 1) {
+            }
+            else {
+                productobj.quantity = Number(productobj.quantity) - 1;
+            }
+        }
+        if (oper == 'add') {
+            if (productobj.quantity > 5) {
+            }
+            else {
+                productobj.quantity = Number(productobj.quantity) + 1;
+            }
+        }
+        console.log(productobj.quantity)
+        $http.put(globlecart + "/" + productobj.product_id + "/" + productobj.quantity).then(function (rdata) {
             $scope.getCartData();
         }, function (r) {
         })
@@ -85,21 +98,17 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
     }
 
     $scope.avaiblecredits = avaiblecredits;
-    console.log($scope.avaiblecredits);
-    
-    $scope.checkOrderTotal = function(){
-        if($scope.globleCartData.used_credit){
-            $scope.globleCartData.grand_total =$scope.globleCartData.total_price - $scope.globleCartData.used_credit;
+
+    $scope.checkOrderTotal = function () {
+        if ($scope.globleCartData.used_credit) {
+            $scope.globleCartData.grand_total = $scope.globleCartData.total_price - $scope.globleCartData.used_credit;
         }
-        else{
+        else {
             $scope.globleCartData.used_credit = 0;
-            $scope.globleCartData.grand_total =$scope.globleCartData.total_price;
+            $scope.globleCartData.grand_total = $scope.globleCartData.total_price;
             alert("Invalid Credit Entered.")
         }
     }
-    
-
-   
 
     //Get Menu data
     var globlemenu = baseurl + "Api/categoryMenu";
@@ -108,5 +117,55 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
         console.log(r.data)
     }, function (e) {
     })
+
+    $scope.projectDetailsModel = {'productobj': {}, 'quantity': 1};
+    //get product detail model
+    $scope.viewShortDetails = function (detailobj) {
+        $scope.projectDetailsModel.productobj = detailobj;
+    }
+
+
+    $scope.modelProductQuantity = function () {
+
+        $timeout(function () {
+            var quantity = $("#model_quantity").val();
+            $scope.projectDetailsModel.quantity = quantity;
+        })
+
+    }
+
+
+
+
 })
 
+
+ClassApartStore.controller('ProductDetails', function ($scope, $http, $timeout, $interval, $filter) {
+    $scope.productver = {'quantity': 1};
+
+    $scope.updateCartDetail = function (oper) {
+        console.log(oper)
+        if (oper == 'sub') {
+            if ($scope.productver.quantity == 1) {
+            }
+            else {
+                $scope.productver.quantity = Number($scope.productver.quantity) - 1;
+            }
+        }
+        if (oper == 'add') {
+            if ($scope.productver.quantity > 5) {
+            }
+            else {
+                $scope.productver.quantity = Number($scope.productver.quantity) + 1;
+            }
+        }
+    }
+
+    $(function () {
+        $(".select2").on('select2:select', function (e) {
+            var data = e.params.data;
+            var url = baseurl + "Product/ProductDetails/" + data.id + "";
+            window.location = url;
+        });
+    })
+})

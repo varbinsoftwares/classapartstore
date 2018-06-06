@@ -28,6 +28,12 @@ class Product extends CI_Controller {
     function ProductDetails($product_id) {
         $prodct_details = $this->Product_model->productDetails($product_id);
         if ($prodct_details) {
+            
+            
+            $prodct_details_attrs = $this->Product_model->productDetailsVariants($product_id);
+            
+            $data['product_attr_variant'] = $prodct_details_attrs;
+            
             $pquery = "SELECT pa.attribute, cav.attribute_value FROM product_attribute as pa
       join category_attribute_value as cav on cav.id = pa.attribute_value_id
       where pa.product_id = $product_id";

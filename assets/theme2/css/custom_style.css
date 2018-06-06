@@ -1,0 +1,309 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 4, 2018, 8:40:18 PM
+    Author     : p
+*/
+
+
+
+/*new css by me*/
+.product_list_style{
+    border: 1px solid #d0d0d0;
+    margin: 10px 0px;
+    padding-top: 15px;
+}
+
+.product_details_height{
+    height: 100px;
+}
+
+.product_details_height h3{
+    font-size: 14px!important
+}
+
+.product_image_back {
+    background-size: contain!important;
+    background-repeat: no-repeat!important;
+    background-position-x: center!important;
+    background-position-y: center!important;
+}
+
+
+.product_image_back_grid{
+    height: 224px;
+}
+
+.product_image_back_list{
+    height: 190px;
+    width: 190px;
+}
+
+
+.product_image_detail_big{
+    height: 483px;
+    width: 483px
+}
+
+
+.product_image_detail_small{
+    height: 78px;
+    width: auto;
+}
+
+.product_image_detail{
+    padding: 10px;
+}
+
+.product_detail_attr{
+    margin: 0px;
+        margin-top: -7px;
+    font-weight: bold;
+    background-color: white;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+
+.productblock{
+    padding: 10px;
+    border: 1px solid rgb(255, 214, 88);
+    margin-bottom: 30px;
+}
+
+
+.cart-area > ul > li .media .cart-content ul li:first-child {
+    width: 180px;
+}
+
+b.barcomb-list {
+    margin: 0px 5px;
+    color: white;
+}
+
+.modal-dialog .product-details1-area .inner-product-details-left ul li {
+    margin: 16px 0 0 0;
+    padding: 5px 0px 5px 0px;
+}
+
+.product-details1-area .inner-product-details-left ul li:hover {
+    border: 2px solid #ff0000;
+}
+
+.product-details1-area .inner-product-details-left ul .active {
+    border: 2px solid #ff0000;
+}
+
+.product-details1-area .inner-product-details-left .tab-content {
+    border: 0px solid red;
+    margin-top: 5px;
+    padding: 20px 0px;
+}
+
+.product_attr_h2{
+    padding-top: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #000;
+}
+
+.product_attr a {
+    color: #4f4f4f;
+    text-decoration: none;
+}
+
+.spacification_product_details ul > li{
+
+    background: white!important;
+}
+
+.cart_image_block{
+    height: 100px;width: auto;    margin: 0 auto;
+}
+
+@media only screen and (max-width: 479px) {
+    .inner-page-banner-area .breadcrumb-area{
+        top:25px;
+        padding: 0px 5px;
+    }
+    
+    .product_image_detail_big{
+        width: 306px;
+        height: 306px;
+    }
+    .cart_image_block{
+        width: auto; 
+        margin: 0 auto;
+        height: auto;
+    }
+    .product-box1 .product-img-holder a img {
+        width: auto;
+    }
+    .product-box1 .product-img-holder {
+        display: inline;
+        padding: 5px;
+    }
+    .product_image_back_list {
+        height: 190px;
+        width: auto;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .inner-page-banner-area .breadcrumb-area{
+        top:25px;
+        padding: 0px 5px;
+    }
+    .product_image_detail_big{
+        width: 306px;
+        height: 306px;
+    }
+    .cart_image_block{
+        width: auto;   
+        margin: 0 auto;
+        height: auto;
+    }
+    .product-box1 .product-img-holder {
+        display: inline;
+        padding: 5px;
+    }
+    .product_image_back_list {
+        height: 190px;
+        width: auto;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .inner-page-banner-area .breadcrumb-area{
+        top:25px;
+        padding: 0px 5px;
+    }
+    .product_image_detail_big{
+        width: 306px;
+        height: 306px;
+    }
+    .cart_image_block{
+        width: auto;    
+        margin: 0 auto;
+        height: auto;
+    }
+    .product-box1 .product-img-holder {
+        display: inline;
+    }
+    .product_image_back_list {
+        height: 190px;
+        width: auto;
+    }
+
+}
+
+.cart_header_stick{
+    display: none;
+    right: 47px;
+    top: 11px;
+    position: absolute;
+    font-size: 24px;
+}
+
+.cart_header_stick span {
+    background: #f01211;
+    width: 22px;
+    height: 22px;
+    float: right;
+    border-radius: 50%;
+    margin-top: -8px;
+    font-size: 12px;
+    color: white;
+    line-height: 21px;
+    margin-left: -2px;
+    text-align: center;
+}
+
+.stick .cart_header_stick{
+    display: block;
+}
+
+.order-sheet b{
+    font-size: 12px;
+}
+
+.availble_credit{
+    border: 2px solid;
+} 
+
+.availble_credit {
+    border: 0px solid;
+    background: #dddddd;
+    margin-top: -10px;
+    padding: 10px 8px;
+    color: black;
+    margin: -10px -3px;
+    border-left: 1px solid #b6b6b6;
+    border-right: 1px solid #b6b6b6;
+}
+.address_block p {
+    margin: 10px 10px;
+}
+
+
+.order_box{
+    padding: 10px;
+    padding-bottom: 11px!important;
+    height: 160px;
+    border: 1px solid;
+}
+.order_box li{
+    line-height: 19px!important;
+    padding: 7px!important;
+    border: none!important;
+    list-style-type: none;
+}
+
+.order_box li i{
+    float: left!important;
+    line-height: 19px!important;
+    margin-right: 13px!important;
+}
+
+.order-details-page-area{
+    padding:50px 0;
+}
+
+.myisotop1:after {
+    content: "";
+    position: absolute;
+    border-bottom: 1px solid #b6b6b6;
+    border-top: 1px solid #b6b6b6;
+    height: 4px;
+    background: transparent;
+    width: 73%;
+    right: 0;
+    top: 35%;
+    z-index: 1;
+}
+
+.product_highlights span{
+    width: 100px;
+    float: left;
+}
+
+.product_variation_list{
+    margin-bottom: 20px;
+}
+
+.product_variation_list li.active{
+    background: black;
+    color:white;
+}
+.product_variation_list li.active a{
+    background: black;
+    color:white;
+}
+
+.product_details_height p, .product_attr_small{
+font-size: 8px;
+    margin-bottom: 9px;
+}

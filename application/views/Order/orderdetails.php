@@ -2,44 +2,30 @@
 $this->load->view('layout/header');
 ?>
 
-<style>
-    .order_box{
-        padding: 10px;
-        padding-bottom: 11px!important;
-        height: 160px;
-    }
-    .order_box li{
-        line-height: 19px!important;
-        padding: 7px!important;
-        border: none!important;
-    }
 
-    .order_box li i{
-        float: left!important;
-        line-height: 19px!important;
-        margin-right: 13px!important;
-    }
-</style>
+<div class="inner-page-banner-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcrumb-area">
+                    <h1>Order Details</h1>
+                    <ul>
 
-<!-- Slider -->
-<section class="sub-bnr" data-stellar-background-ratio="0.5">
-    <div class="position-center-center">
-        <div class="container">
-            <h4>Order No. #<?php echo $order_data->order_no; ?> </h4>
-            <!-- Breadcrumb -->
-            <ol class="breadcrumb">
-                <li><a href="#">Order Details</a></li>
-
-            </ol>
+                        <li>Order No. #<?php echo $order_data->order_no; ?></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-</section>
+</div>
+
+
 
 <!-- Content -->
 <div id="content" ng-controller="OrderDetailsController"> 
 
     <!--======= PAGES INNER =========-->
-    <section class="item-detail-page pad-t-b-60">
+    <section class="order-details-page-area" ng-if="globleCartData.total_quantity">
         <div class="container">
             <div class="row  "> 
                 <div class="pricing">
@@ -149,13 +135,33 @@ $this->load->view('layout/header');
             </div>
         </div>
     </section>
+
+
+    <!-- Content -->
+    <div id="content" class="cart-page-area"  ng-if="!globleCartData.total_quantity"> 
+        <!-- Tesm Text -->
+        <section class="error-page text-center pad-t-b-130">
+            <div class="container "> 
+
+                <!-- Heading -->
+                <h1 style="font-size: 40px">No Product Found</h1>
+                <p>Please add product to cart<br>
+                    You can go back to</p>
+                <hr class="dotted">
+                <a href="<?php echo site_url(); ?>" class="btn-send-message ">BACK TO HOME</a>
+            </div>
+        </section>
+    </div>
+    <!-- End Content --> 
+
+
 </div>
 
 
 <script>
 
     ClassApartStore.controller('OrderDetailsController', function ($scope, $http, $timeout, $interval) {
-        var url = baseurl + "Api/order_mail/" + <?php echo $order_data->id; ?>+"/"+'<?php echo $order_data->order_no; ?>';
+        var url = baseurl + "Api/order_mail/" + <?php echo $order_data->id; ?> + "/" + '<?php echo $order_data->order_no; ?>';
         console.log(url);
         $scope.sendOrderMail = function (order_no) {
             swal({
@@ -169,7 +175,7 @@ $this->load->view('layout/header');
                     title: 'Mail Sent!',
                     type: 'success', })
             }, function () {
-                  swal({
+                swal({
                     title: 'Unable To Send Mail!',
                     type: 'error', })
             })

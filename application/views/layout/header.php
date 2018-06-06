@@ -42,6 +42,10 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/theme2/css/select2.min.css">
         <!-- Custom CSS -->
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/theme2/css/style.css">
+
+        <!--custom css style-->
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/theme2/css/custom_style.css">
+
         <!-- Modernizr Js -->
         <script src="<?php echo base_url(); ?>assets/theme2/js/vendor/modernizr-2.8.3.min.js"></script>
         <!-- JavaScripts -->
@@ -138,7 +142,8 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-2 hidden-xs">
                                 <div class="logo-area">
-                                    <a href="index.html"><img class="img-responsive" src="img/logo.png" alt="logo"></a>
+                                    <a href="index.html"><img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.jpg'; ?>" alt="logo" style="    position: absolute;
+                                                              top: -23px;"></a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
@@ -151,40 +156,17 @@
                                     </li>
                                     <li>
                                         <div class="cart-area">
-                                            <a href="#"><i class="fa fa-shopping-cart"  aria-hidden="true"></i><span style="background: #f01211">{{globleCartData.total_quantity}}</span></a>
-                                            <ul>
+                                            <a href="#"><i class="fa fa-shopping-cart" style="color: black;" aria-hidden="true"></i><span style="background: #f01211">{{globleCartData.total_quantity}}</span></a>
+                                            <ul ng-if="globleCartData.total_quantity">
                                                 <li  ng-repeat="product in globleCartData.products">
-                                                    <!--                                                    <div class="cart-single-product">
-                                                                                                            <div class="media">
-                                                                                                                <div class="pull-left cart-product-img">
-                                                                                                                    <a href="#">
-                                                                                                                        <img class="img-responsive" alt="product" src="{{product.file_name}}">
-                                                                                                                    </a>
-                                                                                                                </div>
-                                                                                                                <div class="media-body cart-content">
-                                                                                                                    <ul>
-                                                                                                                        <li>
-                                                                                                                            <h2><a href="#">{{product.title}}</a></h2>
-                                                                                                                            <h3><span>Code:</span> STPT600</h3>
-                                                                                                                        </li>
-                                                                                                                        <li>
-                                                                                                                            <p>X {{product.quantity}} </p>
-                                                                                                                        </li>
-                                                                                                                        <li>
-                                                                                                                            <p>{{product.price|currency:" "}}</p>
-                                                                                                                        </li>
-                                                                                                                        <li>
-                                                                                                                            <a class="trash" href="#." ng-click="removeCart(product.product_id)"><i class="fa fa-trash-o"></i></a>
-                                                                                                                        </li>
-                                                                                                                    </ul>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>-->
+
                                                     <div class="cart-single-product">
                                                         <div class="media">
                                                             <div class="pull-left cart-product-img">
                                                                 <a href="#">
-                                                                    <img class="img-responsive" alt="product" src="{{product.file_name}}">
+                                                                    <div class="product_image_back" style="background: url({{product.file_name}});height: 80px;width: 80px;"></div>
+
+                                                                    <!--<img class="img-responsive" alt="product" src="{{product.file_name}}">-->
                                                                 </a>
                                                             </div>
                                                             <div class="media-body cart-content">
@@ -225,6 +207,10 @@
                                                     </ul>
                                                 </li>
                                             </ul>
+                                            
+                                            
+                                          
+                                            
                                         </div>
                                     </li>
                                     <li>
@@ -297,7 +283,9 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="logo-area">
-                                    <a href="index.html"><img class="img-responsive" src="img/logo2.png" alt="logo"></a>
+                                    <a href="index.html">
+                                        <img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.jpg'; ?>" alt="logo" style="    height: 40px;">
+                                    </a>
                                 </div>
                                 <div class="main-menu-area home2-sticky-area">
                                     <nav>
@@ -313,6 +301,9 @@
 
                                         </ul>
                                     </nav>
+                                </div>
+                                <div class="cart_header_stick">
+                                    <i class="fa fa-shopping-cart" style="color: black;" aria-hidden="true"></i><span>{{globleCartData.total_quantity}}</span>
                                 </div>
                             </div>
                         </div>

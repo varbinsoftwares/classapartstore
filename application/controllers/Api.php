@@ -96,7 +96,7 @@ class Api extends REST_Controller {
                 $key = str_replace("a", "", $key);
                 $val = str_replace("-", ", ", $atv);
                 $query_attr = "SELECT product_id FROM product_attribute
-                           where attribute_id in ($key) and attribute_value_id in ($val)
+                           where  attribute_id in ($key) and attribute_value_id in ($val)
                            group by product_id";
                 $queryat = $this->db->query($query_attr);
                 $productslist = $queryat->result();
@@ -129,17 +129,21 @@ class Api extends REST_Controller {
         $categoriesString = $this->Product_model->stringCategories($category_id) . ", " . $category_id;
         $categoriesString = ltrim($categoriesString, ", ");
 
-        $product_query = "select pt.id as product_id, pt.title, pt.sale_price, pt.regular_price, pt.price, pt.file_name 
+        $product_query = "select pt.id as product_id, pt.*
             from products as pt where pt.category_id in ($categoriesString) $pricequery $proquery";
         $product_result = $this->Product_model->query_exe($product_query);
 
         $productListSt = [];
 
+        $productListFinal = [];
+        
         $pricecount = [];
 
         foreach ($product_result as $key => $value) {
+            $value['attr'] = $this->Product_model->singleProductAttrs($value['product_id']);
             array_push($productListSt, $value['product_id']);
             array_push($pricecount, $value['price']);
+            array_push($productListFinal, $value);
         }
 
         $attr_filter = array();
@@ -171,7 +175,7 @@ class Api extends REST_Controller {
         ob_clean();
         $this->output->set_header('Content-type: application/json');
         $productArray = array('attributes' => $attr_filter,
-            'products' => $product_result,
+            'products' => $productListFinal,
             'product_count' => count($product_result),
             'price' => $pricelist);
         $this->response($productArray);
