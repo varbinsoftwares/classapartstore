@@ -257,6 +257,8 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
             $product_dict = array(
                 'title' => $product_details['title'],
                 'price' => $product_details['price'],
+                'sku' => $product_details['sku'],
+                'attrs'=>$product_details['attrs'],
                 'total_price' => $product_details['price'],
                 'file_name' => imageserver . $product_details['file_name'],
                 'quantity' => $quantity,
@@ -303,6 +305,8 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                 $product_dict = array(
                     'title' => $product_details['title'],
                     'price' => $product_details['price'],
+                    'sku' => $product_details['sku'],
+                    'attrs'=>$product_details['attrs'],
                     'total_price' => $product_details['price'],
                     'file_name' => imageserver . $product_details['file_name'],
                     'quantity' => 1,

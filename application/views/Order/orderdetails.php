@@ -25,7 +25,7 @@ $this->load->view('layout/header');
 <div id="content" ng-controller="OrderDetailsController"> 
 
     <!--======= PAGES INNER =========-->
-    <section class="order-details-page-area" ng-if="globleCartData.total_quantity">
+    <section class="order-details-page-area">
         <div class="container">
             <div class="row  "> 
                 <div class="pricing">
@@ -79,49 +79,51 @@ $this->load->view('layout/header');
                                         </td>
 
                                         <td style="width: 80px">
-                                    <center>   <img src=" <?php echo $product->file_name; ?>" style="height: 70px;"></img>
-                                        </td>
+                                    <center>   
+                                        <img src=" <?php echo $product->file_name; ?>" style="height: 70px;"/>
+                                    </center>
+                                    </td>
 
-                                        <td style="width: 200px;">
-                                            <?php echo $product->title; ?>
-                                        </td>
+                                    <td style="width: 200px;">
+                                        <?php echo $product->title; ?>
+                                    </td>
 
-                                        <td style="text-align: right">
-                                            <?php echo $product->price; ?>
-                                        </td>
+                                    <td style="text-align: right">
+                                        <?php echo $product->price; ?>
+                                    </td>
 
-                                        <td style="text-align: right">
-                                            <?php echo $product->quantity; ?>
-                                        </td>
+                                    <td style="text-align: right">
+                                        <?php echo $product->quantity; ?>
+                                    </td>
 
-                                        <td style="text-align: right;">
-                                            <?php echo $product->total_price; ?>
-                                        </td>
-                                        </tr>
-                                        <?php
-                                    }
-                                    ?>
-                                    <!--end of cart details-->
-
-                                    <tr>
-                                        <td colspan="3"  rowspan="4" style="font-size: 12px">
-                                            <b>Total Amount in Words:</b><br/>
-                                            <span style="text-transform: capitalize"> <?php echo $amount_in_word; ?></span>
-                                        </td>
-
+                                    <td style="text-align: right;">
+                                        <?php echo $product->total_price; ?>
+                                    </td>
                                     </tr>
-                                    <tr>
-                                        <td colspan="2" style="text-align: right">Total</td>
-                                        <td style="text-align: right;width: 60px"><?php echo $order_data->sub_total_price; ?> </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" style="text-align: right">Credit Used</td>
-                                        <td style="text-align: right;width: 60px"><?php echo $order_data->credit_price; ?> </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" style="text-align: right">Toal Amount</td>
-                                        <td style="text-align: right;width: 60px"><?php echo $order_data->total_price; ?> </td>
-                                    </tr>
+                                    <?php
+                                }
+                                ?>
+                                <!--end of cart details-->
+
+                                <tr>
+                                    <td colspan="3"  rowspan="4" style="font-size: 12px">
+                                        <b>Total Amount in Words:</b><br/>
+                                        <span style="text-transform: capitalize"> <?php echo $order_data->amount_in_word; ?></span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="text-align: right">Total</td>
+                                    <td style="text-align: right;width: 60px"><?php echo $order_data->sub_total_price; ?> </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="text-align: right">Credit Used</td>
+                                    <td style="text-align: right;width: 60px"><?php echo $order_data->credit_price; ?> </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="text-align: right">Toal Amount</td>
+                                    <td style="text-align: right;width: 60px"><?php echo $order_data->total_price; ?> </td>
+                                </tr>
 
 
 
@@ -137,22 +139,7 @@ $this->load->view('layout/header');
     </section>
 
 
-    <!-- Content -->
-    <div id="content" class="cart-page-area"  ng-if="!globleCartData.total_quantity"> 
-        <!-- Tesm Text -->
-        <section class="error-page text-center pad-t-b-130">
-            <div class="container "> 
 
-                <!-- Heading -->
-                <h1 style="font-size: 40px">No Product Found</h1>
-                <p>Please add product to cart<br>
-                    You can go back to</p>
-                <hr class="dotted">
-                <a href="<?php echo site_url(); ?>" class="btn-send-message ">BACK TO HOME</a>
-            </div>
-        </section>
-    </div>
-    <!-- End Content --> 
 
 
 </div>

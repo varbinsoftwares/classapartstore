@@ -12,7 +12,7 @@ $this->load->view('layout/header');
     .noti-check1{
         background: #f5f5f5;
         padding: 25px 30px;
-        color: red;
+       
         font-weight: 600;
         margin-bottom: 30px;
     }
@@ -35,7 +35,8 @@ $this->load->view('layout/header');
         background: #fff;
         border: 3px solid #d30603;
         padding: 5px 10px;
-        height: 150px;
+        margin-bottom: 20px;
+
     }
     .checkcart {
         border-radius: 50%;
@@ -60,12 +61,7 @@ $this->load->view('layout/header');
         color: green;
     }
 
-    .address_button{
-        padding: 4px;
-        bottom: 10px;
-        position: absolute;
-        color: white;
-    }
+    
 
     .cartdetail_small {
         float: left;
@@ -74,24 +70,26 @@ $this->load->view('layout/header');
 
 </style>
 
-
-
-<section class="sub-bnr" data-stellar-background-ratio="0.5">
-    <div class="position-center-center">
-        <div class="container">
-            <h4>My Addresses</h4>
-
-            <!-- Breadcrumb -->
-            <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">My Address</li>
-            </ol>
+<div class="inner-page-banner-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcrumb-area">
+                    <h1>My Addresses</h1>
+                    <ul>
+                        <li><a href="#">Home</a> /</li>
+                        <li>Account</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-</section>
+</div>
+
+
 
 <!-- Content -->
-<div id="content"> 
+<div id="content"  class="my-account-page-area"> 
 
     <!-- Blog -->
     <section class="new-main blog-posts ">
@@ -120,7 +118,7 @@ $this->load->view('layout/header');
                                         <?php
                                         foreach ($user_address_details as $key => $value) {
                                             ?>
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <?php if ($value['status'] == 'default') { ?> 
                                                     <div class="checkcart <?php echo $value['status']; ?> ">
                                                         <i class="fa fa-check fa-2x"></i>
@@ -132,7 +130,7 @@ $this->load->view('layout/header');
                                                         <?php echo $value['city']; ?>, <?php echo $value['state']; ?> <?php echo $value['pincode']; ?>
                                                     </p>
                                                     <?php if ($value['status'] != 'default') { ?> 
-                                                        <a href="<?php echo site_url("Account/address/?setAddress=" . $value['id']); ?>" class="btn btn-small address_button">Set As Default</a>
+                                                        <a href="<?php echo site_url("Account/address/?setAddress=" . $value['id']); ?>" class="btn btn-default btn-xs address_button">Set As Default</a>
                                                     <?php } ?> 
                                                 </div>
                                             </div>
@@ -161,32 +159,32 @@ $this->load->view('layout/header');
 
             <!-- Modal -->
             <div class="modal  fade" id="changeAddress" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="    z-index: 20000000;">
-                <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-dialog modal-sm woocommerce" role="document">
                     <form action="#" method="post">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel" style="font-size: 15px">Change Password</h4>
+                                <h4 class="modal-title" id="myModalLabel" style="font-size: 15px">Add Address</h4>
                             </div>
                             <div class="modal-body checkout-form">
 
-                                <label>
+                                <label class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">
                                     Address
-                                    <input type="text" name="address"  value="" class="form-control">
+                                    <input type="text" name="address"  value="" class="woocommerce-Input woocommerce-Input--text input-text">
                                 </label>
 
-                                <label>
+                                <label class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">
                                     City
-                                    <input type="text" name="city"  value="" class="form-control">
+                                    <input type="text" name="city"  value="" class="woocommerce-Input woocommerce-Input--text input-text">
                                 </label>
                                 <br/>
-                                <label>
+                                <label class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">
                                     State
-                                    <input type="text" name="state"  value="" class="form-control">
-                                </label>
-                                <label>
+                                    <input type="text" name="state"  value="" class="woocommerce-Input woocommerce-Input--text input-text">
+                                </label >
+                                <label class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">
                                     Pincode
-                                    <input type="text" name="pincode"  value="" class="form-control">
+                                    <input type="text" name="pincode"  value="" class="woocommerce-Input woocommerce-Input--text input-text">
                                 </label>
                             </div>
                             <div class="modal-footer">
@@ -197,7 +195,14 @@ $this->load->view('layout/header');
                 </div>
             </div>
 
+           
 
             <?php
             $this->load->view('layout/footer');
             ?>
+ <script>
+            $(function(){
+                $(".woocommerce-MyAccount-navigation-link--dashboard").removeClass("active");
+                $(".address_page").addClass("active");
+            })
+            </script>

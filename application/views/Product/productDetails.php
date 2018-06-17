@@ -126,7 +126,7 @@ foreach ($categorie_parent as $key => $value) {
                             $productvrnt = $product_attr_variant[$value['attribute']];
                             if (count($productvrnt) > 1) {
                                 ?>
-                                <p class="product_detail_attr"><?php echo $value['attribute']; ?></p>
+                                <p class="product_detail_attr" style="margin-top: 10px;"><?php echo $value['attribute']; ?></p>
 
                                 <ul class="product-tags">
                                     <?php

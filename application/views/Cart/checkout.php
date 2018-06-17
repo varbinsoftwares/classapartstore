@@ -211,7 +211,7 @@ $this->load->view('layout/header');
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="pLace-order">
-                                                <button class="btn-send-message disabled" type="submit" name="place_order" >PLace Order</button>
+                                                <button class="btn-send-message disabled" type="submit" name="place_order" >Place Order</button>
                                             </div>
                                         </div>
                                     </div>

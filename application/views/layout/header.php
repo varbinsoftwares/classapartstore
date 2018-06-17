@@ -135,7 +135,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
                                 <div class="account-wishlist">
                                     <ul>
-                                        <li><a href="login-registration.html"><i class="fa fa-lock" aria-hidden="true"></i> Account</a></li>
+                                        <li><a href="<?php echo site_url('Account/profile');?>"><i class="fa fa-lock" aria-hidden="true"></i> Account</a></li>
                                         <li><a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i> Wishlist</a></li>
                                     </ul>
                                 </div>
@@ -228,35 +228,11 @@
                                                     </div>
                                                 </div>
                                                 <ul class="sidenav-login-registration">
-                                                    <li data-toggle="collapse" data-target="#login" class="collapsed">
-                                                        <a href="#">Login<span class="arrow"></span></a>
-                                                        <div class="collapse" id="login">
-                                                            <div class="login-registration-field">
-                                                                <form method="post">
-                                                                    <label>Username or email address *</label>
-                                                                    <input type="text">
-                                                                    <label>Password *</label>
-                                                                    <input type="password">
-                                                                    <button value="Login" type="submit" class="btn-side-nav disabled">Login</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
+                                                    <li>
+                                                        <a href="<?php echo site_url("Account/login"); ?>">Login<span class="arrow"></span></a>
                                                     </li>
-                                                    <li data-toggle="collapse" data-target="#registration" class="collapsed">
-                                                        <a href="#">Registration<span class="arrow"></span></a>
-                                                        <div class="collapse" id="registration">
-                                                            <div class="login-registration-field">
-                                                                <form method="post">
-                                                                    <label>User Name*</label>
-                                                                    <input type="text">
-                                                                    <label>E-mail address *</label>
-                                                                    <input type="email">
-                                                                    <label>Password *</label>
-                                                                    <input type="password">
-                                                                    <button value="Login" type="submit" class="btn-side-nav disabled">Register</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
+                                                    <li>
+                                                        <a href="<?php echo site_url("Account/login"); ?>">Registration<span class="arrow"></span></a>
                                                     </li>
                                                 </ul>
                                                 <h3 class="ctg-name-title">Category Name List</h3>

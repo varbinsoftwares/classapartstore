@@ -39,7 +39,7 @@ foreach ($categorie_parent as $key => $value) {
 <!-- Shop Page Area Start Here -->
 <div class="shop-page-area" ng-controller="ProductController">
     <div class="container">
-        <div class="row">
+        <div class="row"  ng-if="productResults.products.length">
             <div class="col-lg-3 col-md-3">
                 <div class="sidebar hidden-after-desk">
                     <h2 class="title-sidebar">SHOP CATEGORIES</h2>
@@ -216,7 +216,7 @@ foreach ($categorie_parent as $key => $value) {
                         </div>
                     </div>
                 </div>
-                <div class="row">
+<!--                <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <ul class="mypagination">
                             <li class="active"><a href="#">1</a></li>
@@ -224,9 +224,28 @@ foreach ($categorie_parent as $key => $value) {
                             <li><a href="#">3</a></li>
                         </ul>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
+        
+        
+        <div id="content"  ng-if="!productResults.products.length"> 
+            <div ng-if="checkproduct == 0">
+                <!-- Tesm Text -->
+                <section class="error-page text-center pad-t-b-130">
+                    <div class="container "> 
+
+                        <!-- Heading -->
+                        <h1 style="font-size: 40px">No Product Found</h1>
+                        <p>Products Will Comming Soon</p>
+                        <hr class="dotted">
+                        <a href="<?php echo site_url(); ?>" class="woocommerce-Button button btn-shop-now-fill">BACK TO HOME</a>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+        
     </div>
 </div>
 <!-- Shop Page Area End Here -->

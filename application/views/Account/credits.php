@@ -26,22 +26,26 @@ $this->load->view('layout/header');
     }
 </style>
 
-<section class="sub-bnr" data-stellar-background-ratio="0.5">
-    <div class="position-center-center">
-        <div class="container">
-            <h4>Credits</h4>
-
-            <!-- Breadcrumb -->
-            <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Credit Statement</li>
-            </ol>
+<div class="inner-page-banner-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcrumb-area">
+                    <h1>Credits</h1>
+                    <ul>
+                        <li><a href="#">Home</a> /</li>
+                        <li>Account</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-</section>
+</div>
+
+
 
 <!-- Content -->
-<div id="content"> 
+<div id="content"  class="my-account-page-area"> 
 
     <!-- Blog -->
     <section class="new-main blog-posts ">
@@ -56,7 +60,7 @@ $this->load->view('layout/header');
                     ?>
 
 
-                    <div class="col-md-9" style="margin-top:20px">
+                    <div class="col-md-9" >
                         <h4>Available Credits : <small>Rs.</small> {{<?php echo $user_credits; ?> |currency:" "}}</h4>
 
                         <h5 style="    margin-top: 51px;
@@ -80,8 +84,8 @@ $this->load->view('layout/header');
                                     <td><?php echo $key + 1; ?></td>
                                     <td><?php echo $value->c_date; ?></td>
                                     <td><?php echo $value->c_time; ?></td>
-                                    <td>{{<?php echo $value->credit ? $value->credit:0; ?> |currency:" "}}</td>
-                                    <td>{{<?php echo $value->debit?$value->debit:0; ?> |currency:" "}}</td>
+                                    <td>{{<?php echo $value->credit ? $value->credit : 0; ?> |currency:" "}}</td>
+                                    <td>{{<?php echo $value->debit ? $value->debit : 0; ?> |currency:" "}}</td>
                                     <td><?php echo $value->remark; ?></td>
 
                                 </tr>
@@ -103,3 +107,9 @@ $this->load->view('layout/header');
             <?php
             $this->load->view('layout/footer');
             ?>
+            <script>
+                $(function () {
+                    $(".woocommerce-MyAccount-navigation-link--dashboard").removeClass("active");
+                    $(".credit_page").addClass("active");
+                })
+            </script>

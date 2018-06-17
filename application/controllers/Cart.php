@@ -83,6 +83,7 @@ class Cart extends CI_Controller {
                     'state' => $address['state'],
                     'order_date' => date('Y-m-d'),
                     'order_time' => date('H:i:s'),
+                    'amount_in_word'=> $this->Product_model->convert_num_word($this->input->post('total_price')),
                     'sub_total_price' => $this->input->post('sub_total_price'),
                     'total_price' => $this->input->post('total_price'),
                     'total_quantity' => $this->input->post('total_quantity'),

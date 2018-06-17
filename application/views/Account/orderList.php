@@ -20,28 +20,32 @@ $this->load->view('layout/header');
         line-height: 19px!important;
         margin-right: 13px!important;
     }
-    
+
     .blog-posts article {
-    margin-bottom: 10px;
-}
+        margin-bottom: 10px;
+    }
 </style>
 
-<section class="sub-bnr" data-stellar-background-ratio="0.5">
-    <div class="position-center-center">
-        <div class="container">
-            <h4>My Orders</h4>
-
-            <!-- Breadcrumb -->
-            <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">My Orders</li>
-            </ol>
+<div class="inner-page-banner-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcrumb-area">
+                    <h1>My Orders</h1>
+                    <ul>
+                        <li><a href="#">Home</a> /</li>
+                        <li>Account</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-</section>
+</div>
+
+
 
 <!-- Content -->
-<div id="content"> 
+<div id="content" class="my-account-page-area"> 
 
     <!-- Blog -->
     <section class="new-main blog-posts ">
@@ -56,7 +60,7 @@ $this->load->view('layout/header');
                     ?>
 
 
-                    <div class="col-md-9" style="margin-top:20px">
+                    <div class="col-md-9">
                         <?php
                         foreach ($orderslist as $key => $value) {
                             ?>
@@ -82,7 +86,7 @@ $this->load->view('layout/header');
 
                                         </div>
                                         <div class="col-md-4">
-                                            <a href="<?php echo site_url('order/orderdetails/'.$value->order_key);?>" class="btn btn-inverse btn-small" style="margin: 0px;    float: right;">View Order</a>
+                                            <a href="<?php echo site_url('order/orderdetails/' . $value->order_key); ?>" class="btn btn-inverse btn-small" style="margin: 0px;    float: right;">View Order</a>
                                         </div>
                                     </article>
 
@@ -105,3 +109,10 @@ $this->load->view('layout/header');
             <?php
             $this->load->view('layout/footer');
             ?>
+
+            <script>
+                $(function () {
+                    $(".woocommerce-MyAccount-navigation-link--dashboard").removeClass("active");
+                    $(".orderlist_page").addClass("active");
+                })
+            </script>
