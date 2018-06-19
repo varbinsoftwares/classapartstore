@@ -111,6 +111,12 @@ where pa.product_id = $product_id group by attribute_value_id";
             $productobj = $product[0];
             $productattr = $this->singleProductAttrs($productobj['id']);
             $productobj['attrs'] = $productattr;
+            
+            $this->db->where('id', $productobj['user_id']);
+            $query = $this->db->get('admin_users');
+            $userobj = $query->result_array()[0];
+            
+            $productobj['vendor'] = $userobj['first_name'] . " " .$userobj['last_name'] ;
             return $productobj;
         } else {
             return FALSE;
@@ -259,6 +265,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                 'price' => $product_details['price'],
                 'sku' => $product_details['sku'],
                 'attrs'=>$product_details['attrs'],
+                'vendor_id'=>$product_details['user_id'],
                 'total_price' => $product_details['price'],
                 'file_name' => imageserver . $product_details['file_name'],
                 'quantity' => $quantity,
@@ -307,6 +314,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                     'price' => $product_details['price'],
                     'sku' => $product_details['sku'],
                     'attrs'=>$product_details['attrs'],
+                    'vendor_id'=>$product_details['user_id'],
                     'total_price' => $product_details['price'],
                     'file_name' => imageserver . $product_details['file_name'],
                     'quantity' => 1,

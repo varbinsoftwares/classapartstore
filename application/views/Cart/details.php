@@ -44,7 +44,7 @@ $this->load->view('layout/header');
                                     </a>
                                 </td>
                                 <td>
-                                    <h3><a href="#">{{product.title}}</a></h3>
+                                    <h3><a href="#">{{product.title}}</a><br/><small style="font-size: 10px">Vendor Code:{{product.vendor_id}}</small></h3>
                                 </td>
                                 <td class="amount">{{product.price|currency:" "}}</td>
                                 <td class="quantity">

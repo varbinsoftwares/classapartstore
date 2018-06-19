@@ -16,19 +16,17 @@ class Order extends CI_Controller {
             $this->user_id = 0;
         }
     }
-
     public function index() {
         redirect('/');
     }
 
+    //orders details
     public function orderdetails($order_key) {
         if ($this->user_id == 0) {
             redirect('/');
         }
         $order_details = $this->Product_model->getOrderDetails($order_key, 'key');
         if ($order_details) {
-
-            
             try {
                 $order_id = $order_details['order_data']->id;
                // $this->Product_model->order_mail($order_id);
@@ -41,7 +39,6 @@ class Order extends CI_Controller {
         else{
              redirect('/');
         }
-
         $this->load->view('Order/orderdetails', $order_details);
     }
 

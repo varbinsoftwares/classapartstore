@@ -10,8 +10,8 @@
         meta_tags();
         ?>
         <!-- Favicon -->
-        <link rel="shortcut icon" href="<?php echo base_url() . 'assets/images/logo73.jpg'; ?>" type="image/x-icon">
-        <link rel="icon" href="<?php echo base_url() . 'assets/images/logo73.jpg'; ?>" type="image/x-icon">
+        <link rel="shortcut icon" href="<?php echo base_url() . 'assets/images/logof.png'; ?>" type="image/x-icon">
+        <link rel="icon" href="<?php echo base_url() . 'assets/images/logof.png'; ?>" type="image/x-icon">
 
 
 
@@ -142,8 +142,9 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-2 hidden-xs">
                                 <div class="logo-area">
-                                    <a href="index.html"><img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.jpg'; ?>" alt="logo" style="    position: absolute;
-                                                              top: -23px;"></a>
+                                    <a href="<?php echo site_url();?>"><img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" alt="logo" style="    position: absolute;
+                                                              top: -23px;    height: 74px;
+    margin-left: -36px;"></a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
@@ -259,8 +260,8 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="logo-area">
-                                    <a href="index.html">
-                                        <img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.jpg'; ?>" alt="logo" style="    height: 40px;">
+                                    <a href="<?php echo site_url();?>">
+                                        <img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" alt="logo" style="    height: 40px;">
                                     </a>
                                 </div>
                                 <div class="main-menu-area home2-sticky-area">
