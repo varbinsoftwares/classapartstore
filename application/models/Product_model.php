@@ -490,12 +490,16 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
 
             $vender_id = $vendor_details->id;
             if (isset($venderarray[$vender_id])) {
+                $venderarray[$vender_id]['quantity'] += $value->quantity;
+                $venderarray[$vender_id]['total_price'] += $value->total_price;
                 array_push($venderarray[$vender_id]['cart_data'], $value);
             } else {
                 $venderarray[$vender_id] = array(
                     'vendor' => $vendor_details,
                     'order_data' => $order_details['order_data'],
-                    'cart_data' => array($value)
+                    'cart_data' => array($value),
+                    'total_price'=>$value->total_price,
+                    'quantity'=>$value->quantity,
                 );
             }
         }
@@ -509,6 +513,8 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                     'c_date' => date('Y-m-d'),
                     'c_time' => date('H:i:s'),
                     'order_id' => $value['order_data']->id,
+                    'total_price'=>$value['total_price'],
+                    'total_quantity'=>$value['quantity'],
                     'vendor_order_no' => $vendor_order,
                     'vendor_id' => $value['vendor']->id,
                     'vendor_email' => $value['vendor']->email,
