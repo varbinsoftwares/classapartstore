@@ -4,7 +4,6 @@
     /*-------------------------------------
      jQuery MeanMenu activation code
      --------------------------------------*/
-    $('nav#dropdown').meanmenu({ siteLogo: "<a href='index.html' class='logo-mobile-menu'><img src='img/logo.png' /></a>" });
 
     /*-------------------------------------
      Home page 4 Category Menu

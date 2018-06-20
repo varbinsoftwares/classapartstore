@@ -238,6 +238,11 @@
 <script src="<?php echo base_url(); ?>assets/theme2/js/select2.min.js" type="text/javascript"></script>
 <!-- Custom Js -->
 <script src="<?php echo base_url(); ?>assets/theme2/js/main.js" type="text/javascript"></script>
+
+<script>
+                    $('nav#dropdown').meanmenu({ siteLogo: "<a href='/' class='logo-mobile-menu'><img src='<?php echo base_url() . 'assets/images/logo73.png'; ?>' style='    height: 28px;' /></a>" });        </script>
+
+
 </body>
 
 </html>

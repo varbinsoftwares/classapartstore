@@ -113,6 +113,11 @@
                     var baseurl = "<?php echo base_url(); ?>index.php/";
                     var avaiblecredits = 0;</script>
 
+
+
+
+
+
         <style>
             .ownmenu .dropdown.megamenu .dropdown-menu li:last-child{
                 margin-bottom: 20px;
@@ -135,16 +140,16 @@
                             <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
                                 <div class="account-wishlist">
                                     <ul>
-                                        <li><a href="<?php echo site_url('Account/profile');?>"><i class="fa fa-lock" aria-hidden="true"></i> Account</a></li>
+                                        <li><a href="<?php echo site_url('Account/profile'); ?>"><i class="fa fa-lock" aria-hidden="true"></i> Account</a></li>
                                         <li><a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i> Wishlist</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-2 hidden-xs">
                                 <div class="logo-area">
-                                    <a href="<?php echo site_url();?>"><img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" alt="logo" style="    position: absolute;
-                                                              top: -23px;    height: 74px;
-    margin-left: -36px;"></a>
+                                    <a href="<?php echo site_url(); ?>"><img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" alt="logo" style="    position: absolute;
+                                                                            top: -23px;    height: 74px;
+                                                                            margin-left: -36px;"></a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
@@ -208,10 +213,10 @@
                                                     </ul>
                                                 </li>
                                             </ul>
-                                            
-                                            
-                                          
-                                            
+
+
+
+
                                         </div>
                                     </li>
                                     <li>
@@ -260,7 +265,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="logo-area">
-                                    <a href="<?php echo site_url();?>">
+                                    <a href="<?php echo site_url(); ?>">
                                         <img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" alt="logo" style="    height: 40px;">
                                     </a>
                                 </div>
@@ -303,7 +308,7 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                               
+
                                             </ul>
                                         </nav>
                                     </div>
