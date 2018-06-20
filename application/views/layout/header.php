@@ -303,51 +303,7 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="about.html">About</a></li>
-                                                <li><a href="#">Blog</a>
-                                                    <ul>
-                                                        <li><a href="blog.html">Blog</a></li>
-                                                        <li><a href="single-blog.html">Single Blog</a></li>
-                                                        <li class="has-child-menu"><a href="#">Demo</a>
-                                                            <ul class="thired-level">
-                                                                <li><a href="#">Demo 1</a></li>
-                                                                <li><a href="#">Demo 2</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">Portfolio</a>
-                                                    <ul>
-                                                        <li><a href="portfolio1.html">Portfolio 1</a></li>
-                                                        <li><a href="portfolio2.html">Portfolio 2</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">Shop</a>
-                                                    <ul>
-                                                        <li><a href="shop1.html">Shop 1</a></li>
-                                                        <li><a href="shop2.html">Shop 2</a></li>
-                                                        <li><a href="shop3.html">Shop 3</a></li>
-                                                        <li><a href="shop4.html">Shop 4</a></li>
-                                                        <li><a href="shop5.html">Shop 5</a></li>
-                                                        <li><a href="shop6.html">Shop 6</a></li>
-                                                        <li><a href="shop7.html">Shop 7</a></li>
-                                                        <li><a href="product-details1.html">Shop Details 1</a></li>
-                                                        <li><a href="product-details2.html">Shop Details 2</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">Pages</a>
-                                                    <ul>
-                                                        <li><a href="login-registration.html">Login Registration</a></li>
-                                                        <li><a href="my-account.html">My Account</a></li>
-                                                        <li><a href="cart.html">Cart</a></li>
-                                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                                        <li><a href="check-out.html">Check Out</a></li>
-                                                        <li><a href="order-history.html">Order History</a></li>
-                                                        <li><a href="order-details.html">Order Details</a></li>
-                                                        <li><a href="404.html">404</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="contact.html">Contact</a></li>
+                                               
                                             </ul>
                                         </nav>
                                     </div>
