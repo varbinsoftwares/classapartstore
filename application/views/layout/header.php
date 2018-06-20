@@ -265,9 +265,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="logo-area">
+                                <div class="logo-area" style="    margin-top: 2px;">
                                     <a href="<?php echo site_url(); ?>">
-                                        <img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" alt="logo" style="    height: 40px;">
+                                        <img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" alt="logo" style="    height:60px;">
                                     </a>
                                 </div>
                                 <div class="main-menu-area home2-sticky-area">
