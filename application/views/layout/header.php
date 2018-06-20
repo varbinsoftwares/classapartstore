@@ -134,7 +134,7 @@
         <!-- Header Area Start Here -->
         <header>
             <div class="header-area-style2" id="sticker">
-                <div class="header-top">
+                <div class="header-top" style="    padding: 60px 0;">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
@@ -148,8 +148,9 @@
                             <div class="col-lg-4 col-md-4 col-sm-2 hidden-xs">
                                 <div class="logo-area">
                                     <a href="<?php echo site_url(); ?>"><img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" alt="logo" style="    position: absolute;
-                                                                            top: -23px;    height: 74px;
-                                                                            margin-left: -36px;"></a>
+    top: -53px;
+    height: 128px;
+    margin-left: -135px;"></a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
