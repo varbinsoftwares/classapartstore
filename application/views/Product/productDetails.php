@@ -155,28 +155,28 @@ foreach ($categorie_parent as $key => $value) {
                             $productvrnt = $product_attr_variant[$value['attribute']];
                             if (count($productvrnt) > 1) {
                                 ?>
-                                                                                    <div class="col-md-6">
-                                                                                        <ul class="more-option">
-                                                                                            <li>
-                                                                                                <div class="form-group">
-                                                                                                    <div class="custom-select">
-                                                                                                         COLOR 
-                                                                                                        <p class="product_detail_attr"><?php echo $value['attribute']; ?></p>
-                                                                                                        <select  class='select2'>
+                                                                                                                                    <div class="col-md-6">
+                                                                                                                                        <ul class="more-option">
+                                                                                                                                            <li>
+                                                                                                                                                <div class="form-group">
+                                                                                                                                                    <div class="custom-select">
+                                                                                                                                                         COLOR 
+                                                                                                                                                        <p class="product_detail_attr"><?php echo $value['attribute']; ?></p>
+                                                                                                                                                        <select  class='select2'>
                                 <?php
                                 foreach ($product_attr_variant[$value['attribute']] as $kat => $vat) {
                                     ?>
                                     <?php //echo $value['attribute_value']; ?>
-                                                                                                                            <option <?php echo $vat['attribute_value'] == $value['attribute_value'] ? 'selected' : ''; ?> value="<?php echo $vat['product_id']; ?>" ><?php echo $vat['attribute_value']; ?></option>
+                                                                                                                                                                                                    <option <?php echo $vat['attribute_value'] == $value['attribute_value'] ? 'selected' : ''; ?> value="<?php echo $vat['product_id']; ?>" ><?php echo $vat['attribute_value']; ?></option>
                                     <?php
                                 }
                                 ?>
-                                                                                                        </select>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
+                                                                                                                                                        </select>
+                                                                                                                                                    </div>
+                                                                                                                                                </div>
+                                                                                                                                            </li>
+                                                                                                                                        </ul>
+                                                                                                                                    </div>
                                 <?php
                             }
                         }
@@ -251,99 +251,47 @@ foreach ($categorie_parent as $key => $value) {
                 </div>
             </div>
             <div class="metro-carousel" data-loop="true" data-items="4" data-margin="30" data-autoplay="true" data-autoplay-timeout="10000" data-smart-speed="2000" data-dots="false" data-nav="true" data-nav-speed="false" data-r-x-small="1" data-r-x-small-nav="true" data-r-x-small-dots="false" data-r-x-medium="2" data-r-x-medium-nav="true" data-r-x-medium-dots="false" data-r-small="2" data-r-small-nav="true" data-r-small-dots="false" data-r-medium="3" data-r-medium-nav="true" data-r-medium-dots="false" data-r-large="4" data-r-large-nav="true" data-r-large-dots="false">
-                <div class="product-box1">
-                    <ul class="product-social">
-                        <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                    </ul>
-                    <div class="product-img-holder">
-                        <a href="#"><img src="img/product/1.jpg" alt="product"></a>
-                    </div>
-                    <div class="product-content-holder">
-                        <h3><a href="#">Product Title Here</a></h3>
-                        <span>$88.00</span>
-                    </div>
-                </div>
-                <div class="product-box1">
-                    <ul class="product-social">
-                        <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                    </ul>
-                    <div class="product-img-holder">
-                        <a href="#"><img src="img/product/2.jpg" alt="product"></a>
-                    </div>
-                    <div class="product-content-holder">
-                        <h3><a href="#">Product Title Here</a></h3>
-                        <span><span>$58.00</span>$40.00</span>
-                    </div>
-                </div>
-                <div class="product-box1">
-                    <ul class="product-social">
-                        <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                    </ul>
-                    <div class="product-img-holder">
-                        <div class="hot-sale">
-                            <span>Sale</span>
+
+                <?php
+                foreach ($product_related as $key => $value) {
+                    ?>
+
+                    <div class="product-box1">
+                        <ul class="product-social">
+                            <li><a href="#" ng-click="addToCart(<?php echo $value['id'];?>, 1)"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                        </ul>
+                        <div class="product-img-holder">
+                            <?php
+                            if ($value['sale_price']) {
+                                ?>
+                                <div class="hot-sale" >
+                                    <span>Sale</span>
+                                </div>
+                                <?php
+                            }
+                            ?>
+
+                            <a href="#">
+                                <div class="product_image_back product_image_back_grid" style="background: url(<?php echo imageserver . $value['file_name']; ?>);"></div>
+
+                            </a>
                         </div>
-                        <a href="#"><img src="img/product/3.jpg" alt="product"></a>
-                    </div>
-                    <div class="product-content-holder">
-                        <h3><a href="#">Product Title Here</a></h3>
-                        <span><span>$74.00</span>$50.00</span>
-                    </div>
-                </div>
-                <div class="product-box1">
-                    <ul class="product-social">
-                        <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                    </ul>
-                    <div class="product-img-holder">
-                        <div class="hot-sale">
-                            <span>Hot</span>
+                        <div class="product-content-holder">
+                            <h3><a href="#"><?php echo $value['title']; ?></a></h3>
+                            <span>
+                                <?php
+                                if ($value['sale_price']) {
+                                    ?>
+                                    <span>{{<?php echo $value['sale_price']; ?>|currency:"<?php echo globle_currency; ?> "}}</span>
+                                    <?php
+                                }
+                                ?>
+                                {{<?php echo $value['price']; ?>|currency:"<?php echo globle_currency; ?> "}}
+                            </span>
                         </div>
-                        <a href="#"><img src="img/product/4.jpg" alt="product"></a>
                     </div>
-                    <div class="product-content-holder">
-                        <h3><a href="#">Product Title Here</a></h3>
-                        <span>$88.00</span>
-                    </div>
-                </div>
-                <div class="product-box1">
-                    <ul class="product-social">
-                        <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                    </ul>
-                    <div class="product-img-holder">
-                        <a href="#"><img src="img/product/5.jpg" alt="product"></a>
-                    </div>
-                    <div class="product-content-holder">
-                        <h3><a href="#">Product Title Here</a></h3>
-                        <span><span>$58.00</span>$40.00</span>
-                    </div>
-                </div>
-                <div class="product-box1">
-                    <ul class="product-social">
-                        <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-                    </ul>
-                    <div class="product-img-holder">
-                        <div class="hot-sale">
-                            <span>New</span>
-                        </div>
-                        <a href="#"><img src="img/product/6.jpg" alt="product"></a>
-                    </div>
-                    <div class="product-content-holder">
-                        <h3><a href="#">Product Title Here</a></h3>
-                        <span>$58.00</span>
-                    </div>
-                </div>
+                <?php }
+                ?>
             </div>
         </div>
     </div>

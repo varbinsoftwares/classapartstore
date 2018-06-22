@@ -6,6 +6,8 @@ $baselink = 'http://'.$_SERVER['SERVER_NAME'];
 $baselinkmain = strpos($baselink, '192.168') ? $baselink.'/classApartStoreAdmin/' : 'http://manage.classapartstore.com/';
 define('imageserver', $baselinkmain."assets_main/productimages/");
 
+define('imageserverslider', $baselinkmain."assets_main/sliderimages/");
+
 define('globle_currency', 'Rs.');
 
 /*

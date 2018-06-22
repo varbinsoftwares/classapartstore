@@ -5,13 +5,13 @@
         <group>
             <file>file:/C:/wamp/www/classapartstore/application/views/Product/productDetails.php</file>
             <file>file:/C:/wamp/www/classapartstore/application/models/User_model.php</file>
-            <file>file:/C:/wamp/www/classapartstore/application/controllers/Account.php</file>
-            <file>file:/C:/wamp/www/classapartstore/application/views/Account/orderList.php</file>
-            <file>file:/C:/wamp/www/classapartstore/application/models/Product_model.php</file>
-            <file>file:/C:/wamp/www/classapartstore/application/views/Account/address.php</file>
-            <file>file:/C:/wamp/www/classapartstore/application/views/layout/header_1.php</file>
+            <file>file:/C:/wamp/www/classapartstore/application/controllers/Shop.php</file>
+            <file>file:/C:/wamp/www/classapartstore/application/views/Product/productList.php</file>
+            <file>file:/C:/wamp/www/classapartstore/assets/theme2/css/style.css</file>
+            <file>file:/C:/wamp/www/classapartstore/application/config/constants.php</file>
+            <file>file:/C:/wamp/www/classapartstore/application/config/config.php</file>
+            <file>file:/C:/wamp/www/classapartstore/application/views/home.php</file>
             <file>file:/C:/wamp/www/classapartstore/application/controllers/Order.php</file>
-            <file>file:/C:/wamp/www/classapartstore/application/views/layout/header.php</file>
         </group>
     </open-files>
 </project-private>

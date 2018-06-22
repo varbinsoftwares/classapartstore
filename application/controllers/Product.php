@@ -28,12 +28,10 @@ class Product extends CI_Controller {
     function ProductDetails($product_id) {
         $prodct_details = $this->Product_model->productDetails($product_id);
         if ($prodct_details) {
-            
-            
             $prodct_details_attrs = $this->Product_model->productDetailsVariants($product_id);
-            
+
             $data['product_attr_variant'] = $prodct_details_attrs;
-            
+
             $pquery = "SELECT pa.attribute, cav.attribute_value FROM product_attribute as pa
       join category_attribute_value as cav on cav.id = pa.attribute_value_id
       where pa.product_id = $product_id";
@@ -43,16 +41,19 @@ class Product extends CI_Controller {
             $data["categorie_parent"] = $categorie_parent;
             $data["product_details"] = $prodct_details;
 
-          
+
+            $pquery = "SELECT pa.* FROM product_related as pr 
+      join products as pa on pa.id = pr.related_product_id
+      where pr.product_id = $product_id";
+            $product_related = $this->Product_model->query_exe($pquery);
+
+            $data["product_related"] = $product_related;
 
             $this->config->load('seo_config');
             $this->config->set_item('seo_title', $prodct_details['title']);
             $this->config->set_item('seo_desc', $prodct_details['short_description']);
             $this->config->set_item('seo_keywords', $prodct_details['keywords']);
-            $this->config->set_item('seo_imgurl', imageserver.$prodct_details['file_name']);
-
-
-
+            $this->config->set_item('seo_imgurl', imageserver . $prodct_details['file_name']);
 
             $this->load->view('Product/productDetails', $data);
         } else {

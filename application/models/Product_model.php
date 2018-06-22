@@ -94,6 +94,7 @@ join category_attribute_value as cav on cav.id = pa.attribute_value_id
 where pa.product_id = $product_id group by attribute_value_id";
         $product_attr_value = $this->query_exe($query);
         $arrayattr = [];
+        if(count($product_attr_value))
         foreach ($product_attr_value as $key => $value) {
             $attrk = $value['attribute'];
            $attrv = $value['attribute_value'];

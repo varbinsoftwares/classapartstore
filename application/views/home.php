@@ -5,29 +5,35 @@ $this->load->view('layout/header');
 <div class="main-slider2">
     <div class="bend niceties preview-1">
         <div id="ensign-nivoslider-3" class="slides">
-            <img src="<?php echo base_url(); ?>assets/theme/images/shop-slider-bg-1.jpg" alt="" title="#slider-direction-1" />
-            <img src="<?php echo base_url(); ?>assets/theme/images/shop-slider-bg-3.jpg"  alt=""  title="#slider-direction-3"  />
+            <?php
+            foreach ($sliders as $key => $value) {
+                ?>
+                <img src="<?php echo imageserverslider.$value->file_name; ?>" alt="" title="#slider-direction-<?php echo $key;?>" />
+                <?php
+            }
+            ?>        
         </div>
-        <div id="slider-direction-1" class="t-cn slider-direction">
-            <div class="slider-content t-lfl s-tb slider-1">
-                <div class="title-container s-tb-c">
-                    <h2 class="title1">Start Your <br><span>Shopping</span> Today</h2>
-                    <p>Smply dummy text of the printing and typesetting industry. Lorem Ipsum has been the</p>
-                    <p>industry's standard dummy text ever since.</p>
-                    <a href="#" class="btn-shop-now-fill-slider">View Collections</a>
+
+
+        <?php
+        foreach ($sliders as $key => $value) {
+            ?>
+            <div id="slider-direction-<?php echo $key;?>" class="t-cn slider-direction">
+                <div class="slider-content t-lfl s-tb slider-1">
+                    <div class="title-container s-tb-c">
+                        <h2 class="title<?php echo $key;?>">
+                            <?php echo $value->title;?>
+                        </h2>
+                        <p style="color:<?php echo $value->line1_color;?>"><?php echo $value->line1;?></p>
+                        <p style="color:<?php echo $value->line2_color;?>"><?php echo $value->line2;?></p>
+                        <a href="<?php echo $value->link;?>" class="btn-shop-now-fill-slider"><?php echo $value->link_text;?></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="slider-direction-3" class="slider-direction">
-            <div class="slider-content t-lfr s-tb slider-3">
-                <div class="title-container s-tb-c">
-                    <h2 class="title1"><span>New Collection</span> Is <br>Available Here</h2>
-                    <p>Smply dummy text of the printing and typesetting industry. Lorem Ipsum has been the</p>
-                    <p>industry's standard dummy text ever since.</p>
-                    <a href="#" class="btn-shop-now-fill-slider">View Collections</a>
-                </div>
-            </div>
-        </div>
+            <?php
+        }
+        ?>
+
     </div>
 </div>
 <!-- Slider Area End Here -->
@@ -46,8 +52,7 @@ $this->load->view('layout/header');
                 ?>
                 <div class="product-box1">
                     <ul class="product-social">
-                        <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                        <li><a href="#" ng-click="addToCart(<?php echo $value['id']; ?>, 1)"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
                     </ul>
                     <div class="product-img-holder">
                         <?php if ($value['sale_price'] > 0) { ?>
@@ -102,7 +107,7 @@ $this->load->view('layout/header');
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="isotop-classes-tab myisotop1">
-            
+
                     <a href="#" data-filter=".popular">Popular</a>
                 </div>
             </div>
@@ -116,18 +121,16 @@ $this->load->view('layout/header');
                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 on-sale">
                     <div class="product-box1">
                         <ul class="product-social">
-                            <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                            <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                            <li><a href="#" ng-click="addToCart(<?php echo $value['id']; ?>, 1)"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
                         </ul>
                         <div class="product-img-holder">
                             <a href="#">
-                                <div class="product_image_back product_image_back_grid" style="background: url(<?php echo imageserver. $value['file_name'];?>);"></div>
+                                <div class="product_image_back product_image_back_grid" style="background: url(<?php echo imageserver . $value['file_name']; ?>);"></div>
                                 <!--<img src="img/product/3.jpg" alt="product">-->
                             </a>
                         </div>
                         <div class="product-content-holder">
-                            <h3><a href="#"><?php echo $value['title']; ?></a></h3>
+                            <h3><a href="<?php echo site_url("Product/ProductDetails/" . $value['id']); ?>"><?php echo $value['title']; ?></a></h3>
                             <span><span>{{<?php echo $value['sale_price']; ?>|currency:"<?php echo globle_currency; ?> "}}</span>{{<?php echo $value['price']; ?>|currency:"<?php echo globle_currency; ?> "}}</span>
                         </div>
                     </div>

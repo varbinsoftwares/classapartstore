@@ -17,6 +17,9 @@ class Shop extends CI_Controller {
         $data["categories"] = $categories;
         $data["product_home_slider_bottom"] = $product_home_slider_bottom;
         
+        $query = $this->db->get('sliders');
+        $data['sliders'] = $query->result();
+
         $this->load->view('home', $data);
     }
 
