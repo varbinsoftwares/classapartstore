@@ -3,12 +3,7 @@ $this->load->view('layout/header');
 ?>
 <?php
 $linklist = [];
-foreach ($categorie_parent as $key => $value) {
-    $cattitle = $value['category_name'];
-    $catid = $value['id'];
-    $liobj = "<li><a href='" . site_url("Product/ProductList/" . $catid) . "'>$cattitle</a></li>";
-    array_push($linklist, $liobj);
-}
+
 ?>
 
 
@@ -37,78 +32,19 @@ foreach ($categorie_parent as $key => $value) {
 </div>
 <!-- Inner Page Banner Area End Here -->
 <!-- Shop Page Area Start Here -->
-<div class="shop-page-area" ng-controller="ProductController">
+<div class="shop-page-area" ng-controller="ProductSearchController">
     <div class="container">
+        
+
         <div class="row"  ng-if="productResults.products.length">
             <div class="col-lg-3 col-md-3">
                 <div class="sidebar hidden-after-desk">
+                  
 
-                    <?php
-                    if (count($categories)) {
-                        ?>
-                        <h2 class="title-sidebar">SHOP CATEGORIES</h2>
-                        <div class="category-menu-area sidebar-section-margin" id="category-menu-area">
-                            <ul>
-                                <?php
-                                foreach ($categories as $key => $value) {
-                                    $subcategories = $value['sub_category'];
-                                    ?>  
 
-                                    <li>
-                                        <a href="<?php echo site_url("Product/ProductList/" . $value['id']); ?>">
-                                            <i class="flaticon-left-arrow"></i>
-                                            <?php echo $value['category_name']; ?>
-
-                                            <?php
-                                            if (count($subcategories)) {
-                                                ?>
-                                                <span>
-                                                    <i class="flaticon-next"></i>
-                                                </span>
-                                                <?php
-                                            }
-                                            ?>
-                                        </a>
-                                        <?php
-                                        if (count($subcategories)) {
-                                            ?>
-                                            <ul class="dropdown-menu">
-                                                <?php
-                                                foreach ($subcategories as $key1 => $value1) {
-                                                    ?>
-                                                    <li>
-                                                        <a href="<?php echo site_url("Product/ProductList/" . $value1['id']); ?>">
-                                                            <?php echo $value1['category_name']; ?>
-                                                        </a>
-                                                    </li>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </ul>
-                                            <?php
-                                        }
-                                        ?>
-                                    </li>
-                                    <?php
-                                }
-                                ?>   
-                            </ul>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                    <h2 class="title-sidebar product_attr_h2">FILTER BY PRICE</h2>
-                    <div id="price-range-wrapper" class="price-range-wrapper">
-                        <div id="price-range-filter"></div>
-                        <div class="price-range-select">
-                            <div class="price-range" id="price-range-min">{{productResults.price.minprice}}</div>
-                            <div class="price-range" id="price-range-max">{{productResults.price.maxprice}}</div>
-                        </div>
-                        <button class="btn-services-shop-now" type="button" ng-click="filterPrice()">Filter</button>
-                    </div>
-
-                    <div class="product_attr" ng-repeat="(attrk, attrv) in productResults.attributes" ng-if="attrv.length > 1">
+                    <div class="product_attr" ng-repeat="(attrk, attrv) in productResults.attributes" >
                         <!-- HEADING -->
+                  
                         <h2 class="title-sidebar product_attr_h2">{{attrk}}</h2>
 
                         <!-- COLORE -->
@@ -134,17 +70,7 @@ foreach ($categorie_parent as $key => $value) {
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
-                        <!--                        <div class="inner-shop-top-left">
-                                                    <div class="dropdown">
-                                                        <button class="btn sorting-btn dropdown-toggle" type="button" data-toggle="dropdown">Default Sorting<span class="caret"></span>
-                                                        </button>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="#">Date</a></li>
-                                                            <li><a href="#">Best Sale</a></li>
-                                                            <li><a href="#">Rating</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>-->
+                        <h3>Your are searching (<?php echo $keyword?>)</h3>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-4">
                         <div class="inner-shop-top-right">
@@ -222,19 +148,19 @@ foreach ($categorie_parent as $key => $value) {
                         </div>
                     </div>
                 </div>
-                <!--                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <ul class="mypagination">
-                                            <li class="active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                        </ul>
-                                    </div>
-                                </div>-->
+<!--                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <ul class="mypagination">
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                        </ul>
+                    </div>
+                </div>-->
             </div>
         </div>
-
-
+        
+        
         <div id="content"  ng-if="!productResults.products.length"> 
             <div ng-if="checkproduct == 0">
                 <!-- Tesm Text -->
@@ -251,14 +177,15 @@ foreach ($categorie_parent as $key => $value) {
             </div>
 
         </div>
-
+        
     </div>
 </div>
 <!-- Shop Page Area End Here -->
 
 
 <script>
-    var category_id = <?php echo $category; ?>;
+    
+    var keywords = "<?php echo $keyword?>";
 </script>
 <!--angular controllers-->
 <script src="<?php echo base_url(); ?>assets/theme/angular/productController.js"></script>

@@ -75,6 +75,30 @@ class Api extends REST_Controller {
     }
 
     //Product 
+    public function SearchSuggestApi_get($keyword) {
+        $query = $this->db->select('title, id, file_name')->from('products')->where("keywords LIKE '%$keyword%' or title LIKE '%$keyword%' ")->get();
+        $searchobj = $query->result_array();
+
+        $pquery = "select title, file_name, id from (
+                    (SELECT title, file_name, id from products where keywords like '%$keyword%' )
+                   union 
+                   (SELECT title, file_name, id from products where title like '%$keyword%')
+                    ) as search group by id   
+                  ";
+        $attr_products = $this->Product_model->query_exe($pquery);
+
+
+        $this->response($searchobj);
+    }
+
+    public function SearchSuggestApiJUI_get() {
+        $getdata = $this->get();
+        $keyword = $getdata['term'];
+        $query = $this->db->select('title, id')->from('products')->where("keywords LIKE '%$keyword%'")->get();
+        $searchobj = $query->result_array();
+        $this->response($searchobj);
+    }
+
     //ProductList APi
     public function productListApi_get($category_id) {
         $attrdatak = $this->get();
@@ -83,8 +107,8 @@ class Api extends REST_Controller {
 
 
         if (isset($attrdatak["minprice"])) {
-            $mnpricr = $attrdatak["minprice"]-1;
-            $mxpricr = $attrdatak["maxprice"]+1;
+            $mnpricr = $attrdatak["minprice"] - 1;
+            $mxpricr = $attrdatak["maxprice"] + 1;
             unset($attrdatak["minprice"]);
             unset($attrdatak["maxprice"]);
             $pricequery = " and (price between '$mnpricr' and '$mxpricr') ";
@@ -136,7 +160,121 @@ class Api extends REST_Controller {
         $productListSt = [];
 
         $productListFinal = [];
-        
+
+        $pricecount = [];
+
+        foreach ($product_result as $key => $value) {
+            $value['attr'] = $this->Product_model->singleProductAttrs($value['product_id']);
+            array_push($productListSt, $value['product_id']);
+            array_push($pricecount, $value['price']);
+            array_push($productListFinal, $value);
+        }
+
+        $attr_filter = array();
+        $pricelist = array();
+        if (count($productListSt)) {
+            $pricelist = array('maxprice' => max($pricecount), 'minprice' => min($pricecount));
+
+
+            $productString = implode(",", $productListSt);
+
+
+            $attr_query = "select count(cav.id) product_count, '' as checked, cav.attribute_value, cav.id, pa.attribute, pa.attribute_id from product_attribute as pa
+        join category_attribute_value as cav on cav.id = pa.attribute_value_id
+        where pa.product_id in ($productString)
+        group by cav.id";
+            $attr_result = $this->Product_model->query_exe($attr_query);
+
+
+            foreach ($attr_result as $key => $value) {
+                $filter = $value['attribute'];
+                if (isset($attr_filter[$filter])) {
+                    array_push($attr_filter[$filter], $value);
+                } else {
+                    $attr_filter[$filter] = [];
+                    array_push($attr_filter[$filter], $value);
+                }
+            }
+        }
+        ob_clean();
+        $this->output->set_header('Content-type: application/json');
+        $productArray = array('attributes' => $attr_filter,
+            'products' => $productListFinal,
+            'product_count' => count($product_result),
+            'price' => $pricelist);
+        $this->response($productArray);
+    }
+
+    //ProductList APi
+    public function productListSearchApi_get($searchkey) {
+        $attrdatak = $this->get();
+        $products = [];
+        $countpr = 0;
+        $searchtext = $searchkey;
+
+        if (isset($attrdatak["minprice"])) {
+            $mnpricr = $attrdatak["minprice"] - 1;
+            $mxpricr = $attrdatak["maxprice"] + 1;
+            unset($attrdatak["minprice"]);
+            unset($attrdatak["maxprice"]);
+            $pricequery = " and (price between '$mnpricr' and '$mxpricr') ";
+        }
+
+        foreach ($attrdatak as $key => $atv) {
+            if ($atv) {
+                $countpr += 1;
+                $key = str_replace("a", "", $key);
+                $val = str_replace("-", ", ", $atv);
+                $query_attr = "SELECT product_id FROM product_attribute
+                           where  attribute_id in ($key) and attribute_value_id in ($val)
+                           group by product_id";
+                $queryat = $this->db->query($query_attr);
+                $productslist = $queryat->result();
+                foreach ($productslist as $key => $value) {
+                    array_push($products, $value->product_id);
+                }
+            }
+        }
+        //print_r($products);
+
+        $productdict = [];
+
+        $productcheck = array_count_values($products);
+
+
+        //print_r($productcheck);
+
+        foreach ($productcheck as $key => $value) {
+            if ($value == $countpr) {
+                array_push($productdict, $key);
+            }
+        }
+
+        $proquery = "";
+        if (count($productdict)) {
+            $proquerylist = implode(",", $productdict);
+            $proquery = " and pt.id in ($proquerylist) ";
+        }
+
+        $categoriesString = $this->Product_model->stringCategories($category_id) . ", " . $category_id;
+        $categoriesString = ltrim($categoriesString, ", ");
+
+         $product_query = "
+                       
+    select * from(
+    (select pt.id as product_id, pt.* from products as pt where keywords like '%$searchtext%') 
+    union
+    (select pt.id as product_id, pt.* from products as pt where title like '%$searchtext%' )
+        ) as pt where pt.id > 0 
+
+                "
+                . " $pricequery $proquery";
+        $product_result = $this->Product_model->query_exe($product_query);
+
+        $productListSt = [];
+
+        $productListFinal = [];
+
         $pricecount = [];
 
         foreach ($product_result as $key => $value) {

@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
     "use strict";
 
     /*-------------------------------------
@@ -8,7 +8,7 @@
     /*-------------------------------------
      Home page 4 Category Menu
      -------------------------------------*/
-    $('#menu-content').on('click', 'li.has-sub-menu > a', function(e) {
+    $('#menu-content').on('click', 'li.has-sub-menu > a', function (e) {
         e.preventDefault();
     });
 
@@ -33,34 +33,34 @@
     /*-------------------------------------
      Carousel slider initiation
      -------------------------------------*/
-    $('.metro-carousel').each(function() {
+    $('.metro-carousel').each(function () {
         var carousel = $(this),
-            loop = carousel.data('loop'),
-            items = carousel.data('items'),
-            margin = carousel.data('margin'),
-            stagePadding = carousel.data('stage-padding'),
-            autoplay = carousel.data('autoplay'),
-            autoplayTimeout = carousel.data('autoplay-timeout'),
-            smartSpeed = carousel.data('smart-speed'),
-            dots = carousel.data('dots'),
-            nav = carousel.data('nav'),
-            navSpeed = carousel.data('nav-speed'),
-            rXsmall = carousel.data('r-x-small'),
-            rXsmallNav = carousel.data('r-x-small-nav'),
-            rXsmallDots = carousel.data('r-x-small-dots'),
-            rXmedium = carousel.data('r-x-medium'),
-            rXmediumNav = carousel.data('r-x-medium-nav'),
-            rXmediumDots = carousel.data('r-x-medium-dots'),
-            rSmall = carousel.data('r-small'),
-            rSmallNav = carousel.data('r-small-nav'),
-            rSmallDots = carousel.data('r-small-dots'),
-            rMedium = carousel.data('r-medium'),
-            rMediumNav = carousel.data('r-medium-nav'),
-            rMediumDots = carousel.data('r-medium-dots'),
-            rLarge = carousel.data('r-large'),
-            rLargeNav = carousel.data('r-large-nav'),
-            rLargeDots = carousel.data('r-large-dots'),
-            center = carousel.data('center');
+                loop = carousel.data('loop'),
+                items = carousel.data('items'),
+                margin = carousel.data('margin'),
+                stagePadding = carousel.data('stage-padding'),
+                autoplay = carousel.data('autoplay'),
+                autoplayTimeout = carousel.data('autoplay-timeout'),
+                smartSpeed = carousel.data('smart-speed'),
+                dots = carousel.data('dots'),
+                nav = carousel.data('nav'),
+                navSpeed = carousel.data('nav-speed'),
+                rXsmall = carousel.data('r-x-small'),
+                rXsmallNav = carousel.data('r-x-small-nav'),
+                rXsmallDots = carousel.data('r-x-small-dots'),
+                rXmedium = carousel.data('r-x-medium'),
+                rXmediumNav = carousel.data('r-x-medium-nav'),
+                rXmediumDots = carousel.data('r-x-medium-dots'),
+                rSmall = carousel.data('r-small'),
+                rSmallNav = carousel.data('r-small-nav'),
+                rSmallDots = carousel.data('r-small-dots'),
+                rMedium = carousel.data('r-medium'),
+                rMediumNav = carousel.data('r-medium-nav'),
+                rMediumDots = carousel.data('r-medium-dots'),
+                rLarge = carousel.data('r-large'),
+                rLargeNav = carousel.data('r-large-nav'),
+                rLargeDots = carousel.data('r-large-dots'),
+                center = carousel.data('center');
 
         carousel.owlCarousel({
             loop: (loop ? true : false),
@@ -111,34 +111,38 @@
     /*-------------------------------------
      Countdown activation code
      -------------------------------------*/
-    $('#countdown').countdown('2018/01/01', function(e) {
+    $('#countdown').countdown('2018/01/01', function (e) {
         $(this).html(e.strftime("<div class='countdown-section'><h3>%-d</h3> <p>day%!d</p> </div><div class='countdown-section'><h3>%H</h3> <p>Hour%!H</p> </div><div class='countdown-section'><h3>%M</h3> <p>Min%!M</p> </div><div class='countdown-section'><h3>%S</h3> <p>Sec%!S</p> </div>"));
     });
 
     /*-------------------------------------
      Jquery Serch Box
      -------------------------------------*/
-    $(document).on('click', '#top-search-form a.search-button', function(e) {
+    $(document).on('click', '.search-button', function (e) {
         e.preventDefault();
 
-        var targrt = $(this).prev('input.search-input');
+        var targrt = $('input.search-input');
         targrt.animate({
             width: ["toggle", "swing"],
             height: ["toggle", "swing"],
             opacity: "toggle"
-        }, 500, "linear");
-
+        }, 500, "linear", function(){
+            
+            setTimeout(function(){
+                 $(".tt-menu").css({"left": $(".search-input").position().left + "px"})
+            },1000)
+         
+        }); 
         return false;
-
     });
 
     /*-------------------------------------
      Contact Form activation code
      -------------------------------------*/
     if ($('#contact-form').length) {
-        $('#contact-form').validator().on('submit', function(e) {
+        $('#contact-form').validator().on('submit', function (e) {
             var $this = $(this),
-                $target = $('.form-response');
+                    $target = $('.form-response');
             if (e.isDefaultPrevented()) {
                 $target.html("<div class='alert alert-success'><p>Please select all required field.</p></div>");
             } else {
@@ -150,10 +154,10 @@
                     url: "php/form-process.php",
                     type: "POST",
                     data: "name=" + name + "&email=" + email + "&message=" + message,
-                    beforeSend: function() {
+                    beforeSend: function () {
                         $target.html("<div class='alert alert-info'><p>Loading ...</p></div>");
                     },
-                    success: function(text) {
+                    success: function (text) {
                         if (text == 'success') {
                             $this[0].reset();
                             $target.html("<div class='alert alert-success'><p>Message has been sent successfully.</p></div>");
@@ -211,7 +215,7 @@
     /*-------------------------------------
      Sidebar Menu activation code
      -------------------------------------*/
-    $('#additional-menu-area').on('click', 'span.side-menu-trigger', function() {
+    $('#additional-menu-area').on('click', 'span.side-menu-trigger', function () {
 
         var $this = $(this);
         if ($this.hasClass('open')) {
@@ -224,7 +228,7 @@
 
     });
 
-    $('#mySidenav').on('click', '.closebtn', function(e) {
+    $('#mySidenav').on('click', '.closebtn', function (e) {
         e.preventDefault();
         document.getElementById('mySidenav').style.width = '0';
         $('#additional-menu-area span.side-menu-trigger').removeClass('open').find('i.fa').removeClass('fa-times').addClass('fa-bars');
@@ -234,9 +238,9 @@
     /*-------------------------------------
      Category menu selecting
      -------------------------------------*/
-    $('#adv-search .sidenav-nav li').on('click', 'a', function() {
+    $('#adv-search .sidenav-nav li').on('click', 'a', function () {
         var $this = $(this),
-            target = $this.parents('div.dropdown').children('button').children('span');
+                target = $this.parents('div.dropdown').children('button').children('span');
         target.text($this.text());
     });
 
@@ -244,21 +248,21 @@
     /*-------------------------------------
      Shop category submenu positioning
      -------------------------------------*/
-    $('#category-menu-area,#category-menu-area-top').on("mouseenter", "ul > li", function() {
+    $('#category-menu-area,#category-menu-area-top').on("mouseenter", "ul > li", function () {
         var self = $(this),
-            target = self.find('ul.dropdown-menu'),
-            targetUlW = target.outerWidth(),
-            parentHolder = self.parents('.category-menu-area'),
-            w = $(window).width() - (parentHolder.offset().left + parentHolder.width());
+                target = self.find('ul.dropdown-menu'),
+                targetUlW = target.outerWidth(),
+                parentHolder = self.parents('.category-menu-area'),
+                w = $(window).width() - (parentHolder.offset().left + parentHolder.width());
         if (targetUlW > w) {
             target.css({
                 'top': 0,
                 'left': '-' + targetUlW + 'px'
             });
         }
-    }).on("mouseleave", "ul li > a", function() {
+    }).on("mouseleave", "ul li > a", function () {
         var self = $(this),
-            target = self.find('ul.dropdown-menu');
+                target = self.find('ul.dropdown-menu');
         target.css({
             'top': '',
             'left': ''
@@ -269,10 +273,10 @@
      Auto height for product listing
      -------------------------------------*/
     function equalHeight() {
-        $('.products-container').each(function() {
+        $('.products-container').each(function () {
             var mHeight = 0;
             $(this).children('div').children('div').height('auto');
-            $(this).children('div').each(function() {
+            $(this).children('div').each(function () {
                 var itemHeight = $(this).actual('height');
                 if (itemHeight > mHeight) {
                     mHeight = itemHeight;
@@ -285,9 +289,9 @@
     /*-------------------------------------
      Window load function
      -------------------------------------*/
-    $(window).on('load', function() {
+    $(window).on('load', function () {
         // Page Preloader
-        $('#preloader').fadeOut('slow', function() {
+        $('#preloader').fadeOut('slow', function () {
             $(this).remove();
         });
 
@@ -303,7 +307,7 @@
                 }
             });
 
-            $container.find('.isotop-classes-tab').on('click', 'a', function() {
+            $container.find('.isotop-classes-tab').on('click', 'a', function () {
                 var $this = $(this);
                 $this.parent('.isotop-classes-tab').find('a').removeClass('current');
                 $this.addClass('current');
@@ -324,11 +328,11 @@
     /*-------------------------------------
      Call the load and resized function
      -------------------------------------*/
-    $(window).on('load resize', function() {
+    $(window).on('load resize', function () {
         equalHeight(); // Call Equal height function
         //Define the maximum height for mobile menu
         var wHeight = $(window).height(),
-            mLogoH = $('a.logo-mobile-menu').outerHeight();
+                mLogoH = $('a.logo-mobile-menu').outerHeight();
         wHeight = wHeight - 50;
         $('.mean-nav > ul').css('height', wHeight + 'px');
     });
@@ -336,17 +340,17 @@
     /*-------------------------------------
      window scroll function
      -------------------------------------*/
-    $(window).on('scroll', function() {
+    $(window).on('scroll', function () {
         //jquery Stiky Menu activation code
         var s = $('#sticker'),
-            w = $('.wrapper-area'),
-            target = s.find('.header-bottom'),
-            windowpos = $(window).scrollTop(),
-            windowWidth = $(window).width();
+                w = $('.wrapper-area'),
+                target = s.find('.header-bottom'),
+                windowpos = $(window).scrollTop(),
+                windowWidth = $(window).width();
 
         if (windowWidth > 767) {
             var topBar = s.find('.header-top'),
-                topBarH = 0;
+                    topBarH = 0;
             if (topBar.length) {
                 topBarH = topBar.outerHeight();
             }
@@ -366,7 +370,7 @@
      Google Map activation code
      -------------------------------------*/
     if ($('#googleMap').length) {
-        var initialize = function() {
+        var initialize = function () {
             var mapOptions = {
                 zoom: 15,
                 scrollwheel: false,
@@ -384,9 +388,9 @@
     }
 
     /*-------------------------------------
-    Price Range Filter activation code
-    -------------------------------------*/
-    var priceSlider = document.getElementById('price-range-filter');
+     Price Range Filter activation code
+     -------------------------------------*/
+    var priceSlider = document.getElementById('price-range-filter1');
     if (priceSlider) {
         noUiSlider.create(priceSlider, {
             start: [20, 80],
@@ -401,8 +405,8 @@
             }),
         });
         var marginMin = document.getElementById('price-range-min'),
-            marginMax = document.getElementById('price-range-max');
-        priceSlider.noUiSlider.on('update', function(values, handle) {
+                marginMax = document.getElementById('price-range-max');
+        priceSlider.noUiSlider.on('update', function (values, handle) {
             if (handle) {
                 marginMax.innerHTML = "$" + values[handle];
             } else {

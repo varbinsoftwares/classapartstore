@@ -210,11 +210,18 @@
 <div id="preloader"></div>
 <!-- Preloader End Here -->
 
-<!--angular controllers-->
-<script src="<?php echo base_url(); ?>assets/theme/angular/shopController.js"></script>
 
 <!-- jquery-->
 <script src="<?php echo base_url(); ?>assets/theme2/js/vendor/jquery-2.2.4.min.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!--angular controllers-->
+<script src="<?php echo base_url(); ?>assets/theme/angular/shopController.js"></script>
+
+
+
+
+
 <!-- Bootstrap js -->
 <script src="<?php echo base_url(); ?>assets/theme2/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- Owl Cauosel JS -->
@@ -237,10 +244,26 @@
 <!-- Select2 Js -->
 <script src="<?php echo base_url(); ?>assets/theme2/js/select2.min.js" type="text/javascript"></script>
 <!-- Custom Js -->
+
+<!--wnum-->
+<script src="<?php echo base_url(); ?>assets/theme2/js/wNumb.js" type="text/javascript"></script>
+
+<!--no slider-->
+<script src="<?php echo base_url(); ?>assets/theme2/js/vendor/nouislider.min.js" type="text/javascript"></script>
+
+
 <script src="<?php echo base_url(); ?>assets/theme2/js/main.js" type="text/javascript"></script>
 
+<!-- type ahead-->
+<script src="<?php echo base_url(); ?>assets/handlebars.js" type="text/javascript"></script>
+
+<!-- type ahead-->
+<script src="<?php echo base_url(); ?>assets/typeahead.bundle.js" type="text/javascript"></script>
+
+
 <script>
-                    $('nav#dropdown').meanmenu({ siteLogo: "<a href='/' class='logo-mobile-menu'><img src='<?php echo base_url() . 'assets/images/logo73.png'; ?>' style='    height: 35px;' /></a>" });        </script>
+    $('nav#dropdown').meanmenu({siteLogo: "<a href='/' class='logo-mobile-menu'><img src='<?php echo base_url() . 'assets/images/logo73.png'; ?>' style='    height: 35px;' /></a>"});
+</script>
 
 
 </body>

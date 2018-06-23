@@ -23,6 +23,12 @@ class Product extends CI_Controller {
         $data["category"] = $cat_id;
         $this->load->view('Product/productList', $data);
     }
+    
+    
+    function ProductSearch(){
+        $data['keyword'] = $_GET['keyword'];
+        $this->load->view('Product/productSearch', $data);
+    }
 
     //function for details
     function ProductDetails($product_id) {

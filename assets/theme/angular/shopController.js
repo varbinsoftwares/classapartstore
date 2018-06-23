@@ -2,6 +2,75 @@
  Shop Cart product controllers
  */
 ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, $interval, $filter) {
+
+
+    var searchProducts = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            url: baseurl + "Api/SearchSuggestApi/" + '%QUERY',
+            wildcard: '%QUERY'
+        }
+    });
+
+    $('#remote .typeahead').typeahead(null, {
+        name: 'search-products',
+        display: 'title',
+        source: searchProducts,
+        templates: {
+            empty: [
+                '<div class="empty-message">',
+                "Can't Find!, Try Something Else",
+                '</div>'
+            ].join('\n'),
+            suggestion: Handlebars.compile('<div class="searchholder"><div class="product_image_back serachbox-image" style="background:url(' + imageurlg + '{{file_name}});"></div><strong>{{title}}</strong></div>')
+        }
+    });
+
+
+    $('.typeahead').bind('typeahead:open', function () {
+        $(".tt-menu").css({"left": $(".search-input").position().left + "px"})
+    });
+
+
+    $('.typeahead').bind('typeahead:select', function (ev, suggestion) {
+        window.location = baseurl+"Product/ProductDetails/"+suggestion.id;
+    });
+
+
+
+
+
+    //search data
+    $(function () {
+//        function log(message) {
+//            $("<div>").text(message).prependTo("#log");
+//            $("#log").scrollTop(0);
+//        }
+//
+//        $("#searchdata").autocomplete({
+//            source: function (request, response) {
+//                $.ajax({
+//                    url: baseurl + "Api/SearchSuggestApi",
+//                    dataType: "jsonp",
+//                    data: {
+//                        term: request.term
+//                    },
+//                    success: function (data) {
+//                        response(data);
+//                    }
+//                });
+//            },
+//            minLength: 2,
+//            select: function (event, ui) {
+//                console.log(ui.item)
+////                log("Selected: " + ui.item.value + " aka " + ui.item.id);
+//            }
+//        });
+    });
+
+    //searchdata 
+
     var globlecart = baseurl + "Api/cartOperation";
     $scope.product_quantity = 1;
 

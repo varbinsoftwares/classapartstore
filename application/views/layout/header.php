@@ -42,6 +42,10 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/theme2/css/select2.min.css">
         <!-- Custom CSS -->
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/theme2/css/style.css">
+        
+        
+        <!-- no slider CSS -->
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/theme2/js/vendor/nouislider.min.css">
 
         <!--custom css style-->
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/theme2/css/custom_style.css">
@@ -111,6 +115,7 @@
                     $httpProvider.defaults.headers.post = {};
             });
                     var baseurl = "<?php echo base_url(); ?>index.php/";
+                    var imageurlg = "<?php echo imageserver;?>";
                     var avaiblecredits = 0;</script>
 
 
@@ -148,19 +153,29 @@
                             <div class="col-lg-4 col-md-4 col-sm-2 hidden-xs">
                                 <div class="logo-area">
                                     <a href="<?php echo site_url(); ?>"><img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" alt="logo" style="    position: absolute;
-    top: -53px;
-    height: 128px;
-    margin-left: -135px;"></a>
+                                                                             top: -53px;
+                                                                             height: 128px;
+                                                                             margin-left: -135px;"></a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
                                 <ul class="header-cart-area">
-                                    <li class="header-search">
-                                        <form id="top-search-form">
-                                            <input type="text" class="search-input" placeholder="Search...." required="">
-                                            <a href="#" class="search-button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                    <li class="header-search" id="remote">
+                                        <form id="top-search-form" action="<?php echo site_url('Product/ProductSearch');?>">                           
+                                                <input type="text" name="keyword" class="search-input typeahead" placeholder="Search...." required="">
+                                                <a href="#" class="search-button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                                <button type="submit" style="height: 0px;width: 0px;opacity: 0;"></button>
                                         </form>
                                     </li>
+                                    
+                                    
+<!--                                    <li class="header-search" >
+                                        <form id="top-search-form" >                           
+                                                <input type="text" id="searchdata" class="search-input" placeholder="Search...." required="">
+                                                <a href="#" class="search-button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                        </form>
+                                    </li>-->
+                                    
                                     <li>
                                         <div class="cart-area">
                                             <a href="#"><i class="fa fa-shopping-cart" style="color: black;" aria-hidden="true"></i><span style="background: #f01211">{{globleCartData.total_quantity}}</span></a>
@@ -222,10 +237,13 @@
                                     </li>
                                     <li>
                                         <div class="additional-menu-area" id="additional-menu-area">
+
+
+
                                             <div id="mySidenav" class="sidenav">
                                                 <a href="#" class="closebtn">×</a>
                                                 <div class="sidenav-search">
-                                                    <div class="input-group stylish-input-group">
+                                                    <div class="input-group stylish-input-group" >
                                                         <input type="text" placeholder="Search Here . . ." class="form-control">
                                                         <span class="input-group-addon">
                                                             <button type="submit">
