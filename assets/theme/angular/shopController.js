@@ -34,7 +34,7 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
 
 
     $('.typeahead').bind('typeahead:select', function (ev, suggestion) {
-        window.location = baseurl+"Product/ProductDetails/"+suggestion.id;
+        window.location = baseurl + "Product/ProductDetails/" + suggestion.id;
     });
 
 
@@ -179,10 +179,30 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
         }
     }
 
+    function equalHeight() {
+        $('.products-container').each(function () {
+            var mHeight = 0;
+            $(this).children('div').children('div').height('auto');
+            $(this).children('div').each(function () {
+                var itemHeight = $(this).actual('height');
+                if (itemHeight > mHeight) {
+                    mHeight = itemHeight;
+                }
+                $(this).children('div').height(mHeight + 'px');
+            });
+        });
+    }
+
     //Get Menu data
     var globlemenu = baseurl + "Api/categoryMenu";
     $http.get(globlemenu).then(function (r) {
         $scope.categoriesMenu = r.data;
+         equalHeight(); // Call Equal height function
+        //Define the maximum height for mobile menu
+        var wHeight = $(window).height(),
+                mLogoH = $('a.logo-mobile-menu').outerHeight();
+        wHeight = wHeight - 50;
+        $('.mean-nav > ul').css('height', wHeight + 'px');
         console.log(r.data)
     }, function (e) {
     })
