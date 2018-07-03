@@ -184,7 +184,7 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
             var mHeight = 0;
             $(this).children('div').children('div').height('auto');
             $(this).children('div').each(function () {
-                var itemHeight = $(this).actual('height');
+                var itemHeight = $(this).height();
                 if (itemHeight > mHeight) {
                     mHeight = itemHeight;
                 }
