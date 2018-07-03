@@ -197,12 +197,19 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
     var globlemenu = baseurl + "Api/categoryMenu";
     $http.get(globlemenu).then(function (r) {
         $scope.categoriesMenu = r.data;
-         equalHeight(); // Call Equal height function
+        equalHeight(); // Call Equal height function
         //Define the maximum height for mobile menu
-        var wHeight = $(window).height(),
-                mLogoH = $('a.logo-mobile-menu').outerHeight();
-        wHeight = wHeight - 50;
-        $('.mean-nav > ul').css('height', wHeight + 'px');
+        $timeout(function () {
+                $('nav#dropdown').meanmenu({ siteLogo: "<a href='index.html' class='logo-mobile-menu'><img src='img/logo.png' /></a>" });
+
+            var wHeight = $(window).height();
+            var mLogoH = $('a.logo-mobile-menu').outerHeight();
+            wHeight = wHeight - 50;
+            $('.mean-nav > ul').css('height', wHeight + 'px');
+        }, 500)
+
+
+
         console.log(r.data)
     }, function (e) {
     })

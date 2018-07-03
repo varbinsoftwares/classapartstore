@@ -319,7 +319,7 @@
                                             <ul>
 
                                                 <li ng-repeat="catv in categoriesMenu">
-                                                    <a href="<?php echo site_url("Product/ProductList/"); ?>{{catv.id}}" class="{{$index==0:'active':''" >{{catv.category_name}}</a>
+                                                    <a href="<?php echo site_url("Product/ProductList/"); ?>{{catv.id}}" class="{{$index==0?'active':''}}" >{{catv.category_name}}</a>
 
                                                     <ul>
                                                         <li ng-repeat="subv in catv.sub_category">
