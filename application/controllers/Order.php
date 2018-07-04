@@ -16,6 +16,7 @@ class Order extends CI_Controller {
             $this->user_id = 0;
         }
     }
+
     public function index() {
         redirect('/');
     }
@@ -26,18 +27,22 @@ class Order extends CI_Controller {
             redirect('/');
         }
         $order_details = $this->Product_model->getOrderDetails($order_key, 'key');
+        $this->db->order_by('id', 'desc');
+        $this->db->where('order_id', $order_details['order_data']->id);
+        $query = $this->db->get('vendor_order');
+        $vendor_order = $query->result();
+
         if ($order_details) {
             try {
                 $order_id = $order_details['order_data']->id;
-               // $this->Product_model->order_mail($order_id);
+                // $this->Product_model->order_mail($order_id);
                 //redirect("Order/orderdetails/$order_key");
             } catch (customException $e) {
                 //display custom message
-               // redirect("Order/orderdetails/$order_key");
+                // redirect("Order/orderdetails/$order_key");
             }
-        }
-        else{
-             redirect('/');
+        } else {
+            redirect('/');
         }
         $this->load->view('Order/orderdetails', $order_details);
     }

@@ -86,6 +86,8 @@ $this->load->view('layout/header');
 
                                     <td style="width: 200px;">
                                         <?php echo $product->title; ?>
+                                        <br/>
+                                        <small style="font-size: 12px;">(<?php echo $product->sku; ?>)</small>
                                     </td>
 
                                     <td style="text-align: right">
@@ -99,6 +101,24 @@ $this->load->view('layout/header');
                                     <td style="text-align: right;">
                                         <?php echo $product->total_price; ?>
                                     </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">
+                                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="collapse<?php echo $product->id; ?>"  aria-controls="collapse<?php echo $product->id; ?>">
+                                                Expand
+                                            </button>
+                                            <div class="collapse" id="collapse<?php echo $product->id; ?>">
+                                                <div class="well">
+                                                    <?php
+                                                    foreach ($product->product_status as $key => $value) {
+                                                        echo $value->remark;
+                                                    }
+                                                    ?>
+                                                </div>
+                                            </div>
+
+
+                                        </td>
                                     </tr>
                                     <?php
                                 }
@@ -146,7 +166,7 @@ $this->load->view('layout/header');
 
 
 <script>
-
+    
     ClassApartStore.controller('OrderDetailsController', function ($scope, $http, $timeout, $interval) {
         var url = baseurl + "Api/order_mail/" + <?php echo $order_data->id; ?> + "/" + '<?php echo $order_data->order_no; ?>';
         console.log(url);
@@ -167,10 +187,10 @@ $this->load->view('layout/header');
                     type: 'error', })
             })
         }
-
+        
     })
-
-
+    
+    
 </script>
 
 

@@ -94,12 +94,12 @@ join category_attribute_value as cav on cav.id = pa.attribute_value_id
 where pa.product_id = $product_id group by attribute_value_id";
         $product_attr_value = $this->query_exe($query);
         $arrayattr = [];
-        if(count($product_attr_value))
-        foreach ($product_attr_value as $key => $value) {
-            $attrk = $value['attribute'];
-           $attrv = $value['attribute_value'];
-            array_push($arrayattr, $attrk.'-'.$attrv);
-        }
+        if (count($product_attr_value))
+            foreach ($product_attr_value as $key => $value) {
+                $attrk = $value['attribute'];
+                $attrv = $value['attribute_value'];
+                array_push($arrayattr, $attrk . '-' . $attrv);
+            }
         return implode(", ", $arrayattr);
     }
 
@@ -112,12 +112,12 @@ where pa.product_id = $product_id group by attribute_value_id";
             $productobj = $product[0];
             $productattr = $this->singleProductAttrs($productobj['id']);
             $productobj['attrs'] = $productattr;
-            
+
             $this->db->where('id', $productobj['user_id']);
             $query = $this->db->get('admin_users');
             $userobj = $query->result_array()[0];
-            
-            $productobj['vendor'] = $userobj['first_name'] . " " .$userobj['last_name'] ;
+
+            $productobj['vendor'] = $userobj['first_name'] . " " . $userobj['last_name'];
             return $productobj;
         } else {
             return FALSE;
@@ -239,10 +239,22 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
         $query = $this->db->get('user_order');
         $order_details = $query->row();
         if ($order_details) {
+            $order_id = $order_details->id;
             $order_data['order_data'] = $order_details;
             $this->db->where('order_id', $order_details->id);
             $query = $this->db->get('cart');
             $cart_items = $query->result();
+
+            foreach ($cart_items as $key => $value) {
+                $vendor_id = $value->vendor_id;
+//                $this->db->order_by('id', 'desc');
+                $this->db->where('order_id', $order_id);
+                $this->db->where('vendor_id', $vendor_id);
+                $query = $this->db->get('vendor_order_status');
+                $orderstatus = $query->result();
+                $value->product_status = $orderstatus;
+            }
+
             $order_data['cart_data'] = $cart_items;
             $order_data['amount_in_word'] = $this->convert_num_word($order_data['order_data']->total_price);
         }
@@ -265,8 +277,8 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                 'title' => $product_details['title'],
                 'price' => $product_details['price'],
                 'sku' => $product_details['sku'],
-                'attrs'=>$product_details['attrs'],
-                'vendor_id'=>$product_details['user_id'],
+                'attrs' => $product_details['attrs'],
+                'vendor_id' => $product_details['user_id'],
                 'total_price' => $product_details['price'],
                 'file_name' => imageserver . $product_details['file_name'],
                 'quantity' => $quantity,
@@ -314,8 +326,8 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                     'title' => $product_details['title'],
                     'price' => $product_details['price'],
                     'sku' => $product_details['sku'],
-                    'attrs'=>$product_details['attrs'],
-                    'vendor_id'=>$product_details['user_id'],
+                    'attrs' => $product_details['attrs'],
+                    'vendor_id' => $product_details['user_id'],
                     'total_price' => $product_details['price'],
                     'file_name' => imageserver . $product_details['file_name'],
                     'quantity' => 1,
@@ -499,8 +511,8 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                     'vendor' => $vendor_details,
                     'order_data' => $order_details['order_data'],
                     'cart_data' => array($value),
-                    'total_price'=>$value->total_price,
-                    'quantity'=>$value->quantity,
+                    'total_price' => $value->total_price,
+                    'quantity' => $value->quantity,
                 );
             }
         }
@@ -514,8 +526,8 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                     'c_date' => date('Y-m-d'),
                     'c_time' => date('H:i:s'),
                     'order_id' => $value['order_data']->id,
-                    'total_price'=>$value['total_price'],
-                    'total_quantity'=>$value['quantity'],
+                    'total_price' => $value['total_price'],
+                    'total_quantity' => $value['quantity'],
                     'vendor_order_no' => $vendor_order,
                     'vendor_id' => $value['vendor']->id,
                     'vendor_email' => $value['vendor']->email,

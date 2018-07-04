@@ -25,7 +25,7 @@ class Account extends CI_Controller {
     //Profile page
     public function profile() {
         if ($this->user_id == 0) {
-            redirect('/');
+            redirect('Account/login');
         }
 
         $user_details = $this->User_model->user_details($this->user_id);
@@ -188,18 +188,31 @@ class Account extends CI_Controller {
         $this->session->unset_userdata($newdata);
         $this->session->sess_destroy();
 
-        redirect('/');
+        redirect('Account/login');
     }
 
     //orders list
     function orderList() {
         if ($this->user_id == 0) {
-            redirect('/');
+            redirect('Account/login');
         }
         $this->db->where('user_id', $this->user_id);
         $query = $this->db->get('user_order');
         $orderlist = $query->result();
-        $data['orderslist'] = $orderlist;
+
+        $orderslistr = [];
+        foreach ($orderlist as $key => $value) {
+
+            $this->db->order_by('id', 'desc');
+            $this->db->where('order_id', $value->id);
+            $query = $this->db->get('user_order_status');
+            $status = $query->row();
+            $value->status = $status ? $status->status : $value->status;
+            array_push($orderslistr, $value);
+        }
+        $data['orderslist'] = $orderslistr;
+
+
         $this->load->view('Account/orderList', $data);
     }
 
@@ -246,7 +259,7 @@ class Account extends CI_Controller {
     //function credits
     function credits() {
         if ($this->user_id == 0) {
-            redirect('/');
+            redirect('Account/login');
         }
 
         $user_id = $this->user_id;
