@@ -2,16 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/wamp/www/classapartstore/application/views/Product/productDetails.php</file>
-            <file>file:/C:/wamp/www/classapartstore/application/models/User_model.php</file>
-            <file>file:/C:/wamp/www/classapartstore/application/controllers/Shop.php</file>
-            <file>file:/C:/wamp/www/classapartstore/application/views/Product/productList.php</file>
-            <file>file:/C:/wamp/www/classapartstore/assets/theme2/css/style.css</file>
-            <file>file:/C:/wamp/www/classapartstore/application/config/constants.php</file>
-            <file>file:/C:/wamp/www/classapartstore/application/config/config.php</file>
-            <file>file:/C:/wamp/www/classapartstore/application/views/home.php</file>
-            <file>file:/C:/wamp/www/classapartstore/application/controllers/Order.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

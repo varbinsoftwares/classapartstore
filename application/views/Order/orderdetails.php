@@ -3,6 +3,15 @@ $this->load->view('layout/header');
 ?>
 
 
+<style>
+    .productStatusBlock{
+        padding:10px;
+        border: 1px solid #000;
+            float: left;
+    margin: 5px;
+    }
+</style>
+
 <div class="inner-page-banner-area">
     <div class="container">
         <div class="row">
@@ -104,18 +113,26 @@ $this->load->view('layout/header');
                                     </tr>
                                     <tr>
                                         <td colspan="7">
-                                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="collapse<?php echo $product->id; ?>"  aria-controls="collapse<?php echo $product->id; ?>">
-                                                Expand
+
+                                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseProduct<?php echo $product->id; ?>" aria-expanded="false" aria-controls="collapseProduct<?php echo $product->id; ?>">
+                                                <i class="fa fa-expand"></i>
                                             </button>
-                                            <div class="collapse" id="collapse<?php echo $product->id; ?>">
-                                                <div class="well">
+                                            
+                                            <div class="collapse" id="collapseProduct<?php echo $product->id; ?>">
+                                                <div class="">
                                                     <?php
                                                     foreach ($product->product_status as $key => $value) {
-                                                        echo $value->remark;
+                                                       ?>
+                                                    <div class="productStatusBlock">
+                                                        <p style="font-size: 10px;"><i class="fa fa-calendar"></i> <?php echo $value->c_date?> <?php echo $value->c_time?></p>
+                                                        <h3><?php echo $value->status;?></h3>
+                                                    </div>
+                                                           <?php
                                                     }
                                                     ?>
                                                 </div>
                                             </div>
+
 
 
                                         </td>
@@ -166,7 +183,7 @@ $this->load->view('layout/header');
 
 
 <script>
-    
+
     ClassApartStore.controller('OrderDetailsController', function ($scope, $http, $timeout, $interval) {
         var url = baseurl + "Api/order_mail/" + <?php echo $order_data->id; ?> + "/" + '<?php echo $order_data->order_no; ?>';
         console.log(url);
@@ -187,10 +204,10 @@ $this->load->view('layout/header');
                     type: 'error', })
             })
         }
-        
+
     })
-    
-    
+
+
 </script>
 
 
