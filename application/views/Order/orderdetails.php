@@ -1,5 +1,6 @@
 <?php
 $this->load->view('layout/header');
+$paymentstatus = "";
 ?>
 
 
@@ -7,8 +8,17 @@ $this->load->view('layout/header');
     .productStatusBlock{
         padding:10px;
         border: 1px solid #000;
-            float: left;
-    margin: 5px;
+        float: left;
+        margin: 5px;
+    }
+
+    .payment_block{
+        padding: 10px;
+        padding-top: 30px;
+        margin: 0px;
+        margin-top: 30px;
+      background: #2196F3;
+    border: 6px solid #FFEB3B;
     }
 </style>
 
@@ -67,6 +77,77 @@ $this->load->view('layout/header');
                         </article>
                     </div>
 
+                    <div class="col-md-12">
+                        <?php
+//                        print_r($order_status);
+                        foreach ($order_status as $key => $value) {
+                            if ($value->status == 'Payment Pending') {
+                                $paymentstatus = "yes";
+                            } else {
+                                $paymentstatus = "no";
+                            }
+                        }
+                        if ($paymentstatus == 'yes') {
+                            ?>
+                            <div class="row payment_block " >
+                                <form action="#" method="post" enctype="multipart/form-data">
+                                    <div class="col-md-12">
+                                        <div class="col-md-3">
+                                            <div class="thumbnail">
+                                                <img src="<?php
+                                                echo imageservermain . 'barcodes/' . $paymentbarcode->file_name;
+                                                ?>" alt="..." style="height:170px;">
+                                                <div class="caption">
+                                                    <h3 style="text-align: center"><?php echo $paymentbarcode->mobile_no; ?></h3>
+                                                </div>
+                                            </div>    
+                                        </div>
+
+                                        <div class="col-md-9">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="image1">Upload Primary Image</label>
+                                                    <input type="file" name="picture" />           
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group sliderbox-panel">
+                                                    <label>Mobile No.</label>
+                                                    <input type="text" class="form-control" name="mobile_no"  placeholder="" value="<?php echo ''; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group sliderbox-panel">
+                                                    <label>Payment ID./Txn ID.</label>
+                                                    <input type="text" class="form-control" name="payment_id"  placeholder="" value="<?php echo ''; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group sliderbox-panel">
+                                                    <label>Payment Date</label>
+                                                    <input type="text" class="form-control" name="payment_date"  placeholder="" value="<?php echo ''; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group sliderbox-panel">
+                                                    <label>Description</label>
+                                                    <textarea class="form-control" name="description"  placeholder=""><?php echo ''; ?></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label></label>
+                                                <button class="btn btn-success btn-lg" type="submit" name="submit" value="submit" style="margin-top: 32px;">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <?php
+                        }
+                        ?>
+                    </div>
+
                     <div class="col-md-12" style=" margin-top: 10px;">
                         <article class="" style="padding: 10px;">
                             <table class="table table-bordered"  border-color= "#9E9E9E" align="center" border="1" cellpadding="0" cellspacing="0" width="600" style="background: #fff;padding:20px">
@@ -113,21 +194,53 @@ $this->load->view('layout/header');
                                     </tr>
                                     <tr>
                                         <td colspan="7">
+                                            <?php
+                                            $laststatus = "";
+                                            $laststatus_cdate = "";
+                                            $laststatus_ctime = "";
+                                            $laststatusremark = ""; 
+                                            foreach ($product->product_status as $key => $value) {
+                                                $laststatus = $value->status;
+                                                $laststatus_cdate = $value->c_date;
+                                                $laststatus_ctime = $value->c_time;
+                                                $laststatusremark = $value->remark;
+                                            }
+                                            ?>
 
-                                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseProduct<?php echo $product->id; ?>" aria-expanded="false" aria-controls="collapseProduct<?php echo $product->id; ?>">
-                                                <i class="fa fa-expand"></i>
+
+
+                                            <button class="btn btn-button pull-right" type="button" data-toggle="collapse" data-target="#collapseProduct<?php echo $product->id; ?>" aria-expanded="false" aria-controls="collapseProduct<?php echo $product->id; ?>">
+                                                Show More  <i class="fa fa-arrow-down"></i>
                                             </button>
-                                            
+
+                                            <div class="statusdiv">
+                                               Current Status: <?php echo $laststatus; ?>
+                                                <p style="font-size: 10px;    margin: 0;">
+                                                    <i class="fa fa-calendar"></i> 
+                                                    <?php echo $laststatus_cdate; ?>
+                                                    <?php echo $laststatus_ctime; ?>
+                                                </p>
+                                                
+                                                <p style="font-size: 12px;    margin: 0;">
+                                                    <?php echo $laststatusremark; ?>
+                                                </p>
+                                            </div>
+
+
+
+
+
+
                                             <div class="collapse" id="collapseProduct<?php echo $product->id; ?>">
                                                 <div class="">
                                                     <?php
                                                     foreach ($product->product_status as $key => $value) {
-                                                       ?>
-                                                    <div class="productStatusBlock">
-                                                        <p style="font-size: 10px;"><i class="fa fa-calendar"></i> <?php echo $value->c_date?> <?php echo $value->c_time?></p>
-                                                        <h3><?php echo $value->status;?></h3>
-                                                    </div>
-                                                           <?php
+                                                        ?>
+                                                        <div class="productStatusBlock">
+                                                            <p style="font-size: 10px;margin: 0;"><i class="fa fa-calendar"></i> <?php echo $value->c_date ?> <?php echo $value->c_time ?></p>
+                                                            <h3><?php echo $value->status; ?></h3>
+                                                        </div>
+                                                        <?php
                                                     }
                                                     ?>
                                                 </div>

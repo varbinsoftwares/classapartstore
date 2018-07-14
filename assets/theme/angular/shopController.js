@@ -83,6 +83,7 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
         $http.get(globlecart).then(function (rdata) {
             $scope.globleCartData = rdata.data;
             $scope.globleCartData['grand_total'] = $scope.globleCartData['total_price'];
+            $(".cartquantity").text($scope.globleCartData.total_quantity);
         }, function (r) {
         })
     }
@@ -201,17 +202,30 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
         $timeout(function () {
             equalHeight(); // Call Equal height function
 
-            $('nav#dropdown').meanmenu({siteLogo: "<a href='index.html' class='logo-mobile-menu'><img src='img/logo.png' /></a>"});
+            $('nav#dropdown').meanmenu({siteLogo: "<a href='/' class='logo-mobile-menu'><img src='img/logo.png' /></a>"});
 
             var wHeight = $(window).height();
             var mLogoH = $('a.logo-mobile-menu').outerHeight();
             wHeight = wHeight - 50;
             $('.mean-nav > ul').css('height', wHeight + 'px');
-        }, 500)
+
+
+            $timeout(function () {
+                var mhref = '<a href="#" class="meanmenu-reveal cartopen" style="right: 35px;left: auto;text-align: center;text-indent: 0px;font-size: 18px;"><i class="fa fa-shopping-cart"></i><b class="cartquantity">'+$scope.globleCartData.total_quantity+'</b></a>';
+                $(".logo-mobile-menu").after(mhref);
+
+                $(".cartopen").click(function () {
+                    $('#mobileModel').modal('show')
+                })
+
+            }, 500);
+
+        }, 500);
 
 
 
-        console.log(r.data)
+
+
     }, function (e) {
     })
 
@@ -223,12 +237,10 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
 
 
     $scope.modelProductQuantity = function () {
-
         $timeout(function () {
             var quantity = $("#model_quantity").val();
             $scope.projectDetailsModel.quantity = quantity;
         })
-
     }
 
 

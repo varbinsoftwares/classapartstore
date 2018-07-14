@@ -78,12 +78,13 @@ $this->load->view('layout/header');
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <div class="cart-page-bottom-right">
-                    <h2>Total</h2>
-                    <h3>Subtotal<span>{{globleCartData.total_price|currency:" "}}</span></h3>
+                    
+                    <h3>Total<span>{{globleCartData.total_price|currency:" "}}</span></h3>
 
                     <div class="proceed-button">
 
-                        <a href=" <?php echo site_url("Cart/checkout"); ?>" class="btn-apply-coupon disabled" >Proceed To Checkout</a>
+                        <a href=" <?php echo site_url("Cart/checkout"); ?>" class="btn-apply-coupon disabled" >Place Order</a>
+                        <p>..and we'll get back to you</p>
                     </div>
                 </div>
             </div>

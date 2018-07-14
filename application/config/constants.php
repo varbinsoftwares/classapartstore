@@ -8,6 +8,8 @@ define('imageserver', $baselinkmain."assets_main/productimages/");
 
 define('imageserverslider', $baselinkmain."assets_main/sliderimages/");
 
+define('imageservermain', $baselinkmain."assets_main/");
+
 define('globle_currency', 'Rs.');
 
 /*

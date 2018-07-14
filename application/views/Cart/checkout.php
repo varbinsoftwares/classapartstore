@@ -168,7 +168,7 @@ $this->load->view('layout/header');
                         <form action="#" method="post">
 
 
-                            <div class="order-sheet">
+                            <div class="order-sheet" style="margin-bottom: 10px;">
                                 <h2>Your Order</h2>
                                 <ul>
                                     <li  ng-repeat="product in globleCartData.products">         
@@ -201,18 +201,15 @@ $this->load->view('layout/header');
                             <div class="col-sm-12">
 
 
-                                <div class="store-info">
-                                    <p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-                                </div>
-
                                 <?php
                                 if (count($user_address_details)) {
                                     ?>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="pLace-order">
+                                            <div class="pLace-order" style="text-align: left;">
                                                 <button class="btn-send-message disabled" type="submit" name="place_order" >Place Order</button>
                                             </div>
+                                            <p>..and we'll get back to you</p>
                                         </div>
                                     </div>
                                 <?php } ?>

@@ -238,7 +238,15 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
         }
         $query = $this->db->get('user_order');
         $order_details = $query->row();
+
         if ($order_details) {
+
+//            $this->db->order_by('id', 'desc');
+            $this->db->where('order_id', $order_details->id);
+            $query = $this->db->get('user_order_status');
+            $userorderstatus = $query->result();
+            $order_data['order_status'] = $userorderstatus;
+
             $order_id = $order_details->id;
             $order_data['order_data'] = $order_details;
             $this->db->where('order_id', $order_details->id);
@@ -537,6 +545,19 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                 );
                 $value['vorder_no'] = $vendor_order;
                 $this->db->insert('vendor_order', $vendor_order_dict);
+                $last_id = $this->db->insert_id();
+
+                //add vendor status
+                $vendor_order_status_data = array(
+                    'c_date' => date('Y-m-d'),
+                    'c_time' => date('H:i:s'),
+                    'vendor_order_id' => $last_id,
+                    'order_id' => $value['order_data']->id,
+                    'status' => "Payment Pending",
+                    'vendor_id' => $value['vendor']->id,
+                    'remark' => "Order Confirmed, Now Payment Pending From Client Side.",
+                );
+                $this->db->insert('vendor_order_status', $vendor_order_status_data);
 
 //                $config = Array(
 //                    'protocol' => 'smtp',

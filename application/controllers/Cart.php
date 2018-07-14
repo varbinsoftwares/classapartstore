@@ -122,9 +122,9 @@ class Cart extends CI_Controller {
                     'c_date' => date('Y-m-d'),
                     'c_time' => date('H:i:s'),
                     'order_id'=>$last_id,
-                    'status' => "Client Confirmation",
+                    'status' => "Payment Pending",
                     'user_id' => $this->user_id,
-                    'remark' => "Order Confirmed From Client Side",
+                    'remark' => "Order Confirmed, Now Need To Process Payment.",
                 );
                 $this->db->insert('user_order_status', $order_status_data);
                 
