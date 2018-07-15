@@ -8,12 +8,12 @@
                         <div class="footer-box">
                             <h3>Information</h3>
                             <ul class="info-list">
-                                <li><a href="about.html">About us</a></li>
+                                <li><a href="#">About us</a></li>
                                 <li><a href="#">Customer Service</a></li>
                                 <li><a href="#">Manufacturers</a></li>
                                 <li><a href="#">Privacy policy</a></li>
                                 <li><a href="#">Terms & condition</a></li>
-                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="#">Blog</a></li>
                             </ul>
                         </div>
                     </div>
@@ -21,12 +21,10 @@
                         <div class="footer-box">
                             <h3>My Account</h3>
                             <ul class="info-list">
-                                <li><a href="login-registration.html">My Account</a></li>
-                                <li><a href="login-registration.html">Login</a></li>
-                                <li><a href="wishlist.html">Order History</a></li>
-                                <li><a href="wishlist.html">Wish List</a></li>
-                                <li><a href="cart.html">View Cart</a></li>
-                                <li><a href="blog.html">Latest Post</a></li>
+                                <li><a href="<?php echo site_url("Account/login"); ?>">Login</a></li>
+                                <li><a href="<?php echo site_url("Account/profile"); ?>">My Account</a></li>
+                                <li><a href="<?php echo site_url("Account/orderList"); ?>">Order History</a></li>
+                                <li><a href="<?php echo site_url("Cart/details"); ?>">View Cart</a></li>
                             </ul>
                         </div>
                     </div>
@@ -40,8 +38,6 @@
                                         <i class="flaticon-left-arrow"></i>{{catv.category_name}}
                                     </a>
                                 </li>
-
-
                             </ul>
                         </div>
                     </div>
@@ -77,7 +73,6 @@
                         <p>Class Apart Store. All Rights Reserved. </p>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-
                     </div>
                 </div>
             </div>
