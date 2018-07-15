@@ -83,7 +83,7 @@ $this->load->view('layout/header');
 
                     <div class="proceed-button">
 
-                        <a href=" <?php echo site_url("Cart/checkout"); ?>" class="btn-apply-coupon disabled" >Place Order</a>
+                        <a href=" <?php echo site_url("Cart/checkout"); ?>" class="btn-apply-coupon disabled" >Proceed</a>
                         <p>..and we'll get back to you</p>
                     </div>
                 </div>

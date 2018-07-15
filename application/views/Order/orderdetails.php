@@ -17,8 +17,8 @@ $paymentstatus = "";
         padding-top: 30px;
         margin: 0px;
         margin-top: 30px;
-      background: #2196F3;
-    border: 6px solid #FFEB3B;
+        background: #ddd;
+    border: 6px solid #ff3b3b;
     }
 </style>
 
