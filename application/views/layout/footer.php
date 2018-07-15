@@ -79,23 +79,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                        <p>© 2016 Metro All Rights Reserved. Designed by<a href="http://radiustheme.com" target="_blank"> RadiusTheme</a></p>
+                        <p>Class Apart Store. All Rights Reserved. </p>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <ul class="payment-method">
-                            <li>
-                                <a href="#"><img src="img/payment-method1.jpg" alt="payment-method"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="img/payment-method2.jpg" alt="payment-method"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="img/payment-method3.jpg" alt="payment-method"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="img/payment-method4.jpg" alt="payment-method"></a>
-                            </li>
-                        </ul>
+                      
                     </div>
                 </div>
             </div>
