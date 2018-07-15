@@ -111,7 +111,7 @@
                                     <div class="account-wishlist">
                                         <ul>
                                             <li><a href="<?php echo site_url('Account/profile'); ?>"><i class="fa fa-lock" aria-hidden="true"></i> Account</a></li>
-                                            <li><a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i> Our Blog - Coming Soon !</a></li>
+                                            <li><a href=""><i class="fa fa-heart-o" aria-hidden="true"></i> Our Blog - Coming Soon !</a></li>
                                         </ul>
                                     </div>
                                 </div>

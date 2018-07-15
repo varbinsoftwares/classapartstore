@@ -182,8 +182,8 @@ $this->load->view('layout/header');
                         <a href="#"><i class="flaticon-necklace"></i></a>
                     </div>
                     <div class="advantage-area-box-content">
-                        <h3>EXCLUSIVE PRODUCT</h3>
-                        <p>Get Products From Exclusive Range.</p>
+                        <h3>EXCLUSIVE PRODUCTS</h3>
+                        <p>Get Products From An Exclusive Range!</p>
                     </div>
                 </div>
             </div>

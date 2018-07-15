@@ -10,10 +10,8 @@
                             <ul class="info-list">
                                 <li><a href="#">About us</a></li>
                                 <li><a href="#">Customer Service</a></li>
-                                <li><a href="#">Manufacturers</a></li>
                                 <li><a href="#">Privacy policy</a></li>
                                 <li><a href="#">Terms & condition</a></li>
-                                <li><a href="#">Blog</a></li>
                             </ul>
                         </div>
                     </div>
