@@ -32,32 +32,27 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="footer-box">
-                            <h3>Product Tag</h3>
+                            <h3>Categories</h3>
                             <ul class="tag-list">
-                                <li><a href="#">Winter</a></li>
-                                <li><a href="#">Fashion</a></li>
-                                <li><a href="#">Bag</a></li>
-                                <li><a href="#">Denime</a></li>
-                                <li><a href="#">Summer Style</a></li>
-                                <li><a href="#">Leather</a></li>
-                                <li><a href="#">Dress</a></li>
-                                <li><a href="#">Dress</a></li>
-                                <li><a href="#">Summer Style</a></li>
-                                <li><a href="#">Leather</a></li>
+
+                                <li ng-repeat="catv in categoriesMenu">
+                                    <a href="<?php echo site_url("Product/ProductList/"); ?>{{catv.id}}" >
+                                        <i class="flaticon-left-arrow"></i>{{catv.category_name}}
+                                    </a>
+                                </li>
+
+
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="footer-box">
-                            <h3>Stay With Us</h3>
-                            <p>Tmply dummy text of the printing and typesetting industry nummy ever.</p>
+                            <h3>Stay With Us!</h3>
+                            <p>Connect with us via social media.</p>
                             <ul class="footer-social">
                                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+
                             </ul>
                             <div class="newsletter-area">
                                 <h3>NewsLetter Sign Up!</h3>
@@ -82,7 +77,7 @@
                         <p>Class Apart Store. All Rights Reserved. </p>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                      
+
                     </div>
                 </div>
             </div>
@@ -251,7 +246,7 @@
 
 
 <script>
-    $('nav#dropdown').meanmenu({siteLogo: "<a href='/' class='logo-mobile-menu'><img src='<?php echo base_url() . 'assets/images/logo73.png'; ?>' style='    height: 35px;' /></a>"});
+                                                    $('nav#dropdown').meanmenu({siteLogo: "<a href='/' class='logo-mobile-menu'><img src='<?php echo base_url() . 'assets/images/logo73.png'; ?>' style='    height: 35px;' /></a>"});
 </script>
 
 
