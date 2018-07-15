@@ -106,7 +106,7 @@ $paymentstatus = "";
                                         <div class="col-md-9">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="image1">Upload Primary Image</label>
+                                                    <label for="image1">Upload Payment Screen</label>
                                                     <input type="file" name="picture" />           
                                                 </div>
                                             </div>
@@ -118,7 +118,7 @@ $paymentstatus = "";
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group sliderbox-panel">
-                                                    <label>Payment ID./Txn ID.</label>
+                                                    <label>Payment ID / Transaction ID</label>
                                                     <input type="text" class="form-control" name="payment_id"  placeholder="" value="<?php echo ''; ?>">
                                                 </div>
                                             </div>
