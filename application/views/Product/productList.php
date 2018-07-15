@@ -192,7 +192,7 @@ foreach ($categorie_parent as $key => $value) {
                         <!-- List Style -->
                         <div role="tabpanel" class="tab-pane clear products-container" id="list-view">
                             <div class="col-lg-12 col-md-12 col-sm-4 col-xs-12 product_list_style"  ng-repeat="(k, product) in productResults.products">
-                                <div class="product-box2">
+                                <div class="product-box2" style="    height: auto!important;">
                                     <div class="media">
                                         <a class="pull-left" href="#">
                                             <!--<img class="img-responsive" src="img/product/grid/1.jpg" alt="product" />-->
