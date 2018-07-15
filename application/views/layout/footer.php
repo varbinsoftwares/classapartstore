@@ -50,17 +50,7 @@
                                 <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 
                             </ul>
-                            <div class="newsletter-area">
-                                <h3>NewsLetter Sign Up!</h3>
-                                <div class="input-group stylish-input-group">
-                                    <input type="text" class="form-control" placeholder="E-mail . . .">
-                                    <span class="input-group-addon">
-                                        <button type="submit">
-                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                        </button>  
-                                    </span>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

@@ -148,39 +148,47 @@ $this->load->view('layout/header');
 <div class="advantage3-area">
     <div class="container">
         <div class="row">
+            
+            
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="advantage-area-box">
                     <div class="advantage-area-box-icon">
                         <a href="#"><i class="flaticon-truck"></i></a>
                     </div>
                     <div class="advantage-area-box-content">
-                        <h3>FREE SHIPPING WORLDWIDE</h3>
-                        <p>On All Orders Of USD $50</p>
+                        <h3>FREE SHIPPING</h3>
+                        <p>On All Orders!</p>
                     </div>
                 </div>
             </div>
+            
+            
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="advantage-area-box">
                     <div class="advantage-area-box-icon">
                         <a href="#"><i class="flaticon-headphones"></i></a>
                     </div>
                     <div class="advantage-area-box-content">
-                        <h3>24/7 CUSTOMER SERVICE</h3>
-                        <p>Get Help When You Need It</p>
+                        <h3>REACH OUT TO US</h3>
+                        <p>Have Problems? Call Us Directly!</p>
                     </div>
                 </div>
             </div>
+            
+            
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="advantage-area-box">
                     <div class="advantage-area-box-icon">
-                        <a href="#"><i class="flaticon-reload"></i></a>
+                        <a href="#"><i class="flaticon-necklace"></i></a>
                     </div>
                     <div class="advantage-area-box-content">
-                        <h3>100% MONEY BACK</h3>
-                        <p>30 Day Money Back Guarantee.</p>
+                        <h3>EXCLUSIVE PRODUCT</h3>
+                        <p>Get Products From Exclusive Range.</p>
                     </div>
                 </div>
             </div>
+            
+            
         </div>
     </div>
 </div>
