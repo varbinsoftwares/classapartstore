@@ -21,7 +21,7 @@ $this->load->view('layout/header');
             <div id="slider-direction-<?php echo $key;?>" class="t-cn slider-direction">
                 <div class="slider-content t-lfl s-tb slider-1">
                     <div class="title-container s-tb-c">
-                        <h2 class="title<?php echo $key;?>">
+                        <h2 class="title<?php echo $key;?>" style="color:<?php echo $value->title_color;?>">
                             <?php echo $value->title;?>
                         </h2>
                         <p style="color:<?php echo $value->line1_color;?>"><?php echo $value->line1;?></p>
