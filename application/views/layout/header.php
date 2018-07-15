@@ -219,12 +219,32 @@
                                                         </div>
                                                     </div>
                                                     <ul class="sidenav-login-registration">
-                                                        <li>
-                                                            <a href="<?php echo site_url("Account/login"); ?>">Login<span class="arrow"></span></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="<?php echo site_url("Account/login"); ?>">Registration<span class="arrow"></span></a>
-                                                        </li>
+
+                                                        <?php
+                                                        $session_data = $this->session->userdata('logged_in');
+                                                        if (isset($session_data['login_id'])) {
+                                                            ?>
+                                                            <li>
+                                                                <a href="<?php echo site_url("Account/profile"); ?>" style="text-transform: capitalize">
+                                                                    <i class="fa fa-user"></i> <?php echo $session_data['first_name'].' '.$session_data['last_name']; ?>
+                                                                    <span class="arrow"></span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="<?php echo site_url("Account/logout"); ?>">Logout<span class="arrow"></span></a>
+                                                            </li>
+
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <li>
+                                                                <a href="<?php echo site_url("Account/login"); ?>">Login<span class="arrow"></span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="<?php echo site_url("Account/login"); ?>">Registration<span class="arrow"></span></a>
+                                                            </li>
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </ul>
                                                     <h3 class="ctg-name-title">Category Name List</h3>
                                                     <ul class="sidenav-nav">
@@ -322,7 +342,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="cart-area cart-area1">
-                                
+
                                 <ul ng-if="globleCartData.total_quantity">
                                     <li  ng-repeat="product in globleCartData.products">
 
@@ -348,8 +368,8 @@
                                                                 </p>
                                                             </h3>
                                                         </li>
-                                                       
-                                                    
+
+
                                                         <li>
                                                             <a class="trash" href="#." ng-click="removeCart(product.product_id)"><i class="fa fa-trash-o"></i></a>
                                                         </li>
@@ -359,7 +379,7 @@
                                         </div>
                                     </li>
 
-                                    
+
                                     <li>
                                         <ul class="checkout">
                                             <li><a href="<?php echo site_url("Cart/details"); ?>" class="btn-checkout1"><i class="fa fa-shopping-cart" aria-hidden="true"></i>View Cart</a></li>
@@ -373,10 +393,10 @@
 
                             </div>
                         </div>
-<!--                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>-->
+                        <!--                        <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>-->
                     </div>
                 </div>
             </div>

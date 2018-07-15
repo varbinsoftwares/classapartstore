@@ -80,7 +80,7 @@ $this->load->view('layout/header');
 </div>
 <!-- Featured Products Area End Here -->
 <!-- Offer Area 1 Start Here -->
-<div class="offer-area1 hidden-after-desk">
+<div class="offer-area1 hidden-after-desk" style="background: url(<?php echo base_url(); ?>assets/theme2/img/med_image.jpg)">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -94,7 +94,7 @@ $this->load->view('layout/header');
             <div id="countdown"></div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="brand-area-box-r">
-                    <a href="#"><img src="img/offer.png" alt="offer"></a>
+                    <a href="#"><img src="<?php echo base_url(); ?>assets/theme2/img/med_image.jpg" alt="offer"></a>
                 </div>
             </div>
         </div>

@@ -76,7 +76,7 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
 
     var currencyfilter = $filter('currency');
 
-    $scope.globleCartData = {};//cart data
+    $scope.globleCartData = {'total_quantity':0};//cart data
 
     //get cart data
     $scope.getCartData = function () {
