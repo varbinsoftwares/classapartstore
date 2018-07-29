@@ -224,24 +224,22 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
                 $(".search_open").click(function () {
                     $('#searchModel').modal('show');
 
-                    $('.typeahead').typeahead(null, {
-                        name: 'search-products',
-                        display: 'title',
-                        source: searchProducts,
-                        templates: {
-                            empty: [
-                                '<div class="empty-message">',
-                                "Can't Find!, Try Something Else",
-                                '</div>'
-                            ].join('\n'),
-                            suggestion: Handlebars.compile('<div class="searchholder"><div class="product_image_back serachbox-image" style="background:url(' + imageurlg + '{{file_name}});"></div><strong>{{title}}</strong></div>')
-                        }
-                    });
-
                 })
 
 
-
+                $('.typeahead').typeahead(null, {
+                    name: 'search-products',
+                    display: 'title',
+                    source: searchProducts,
+                    templates: {
+                        empty: [
+                            '<div class="empty-message">',
+                            "Can't Find!, Try Something Else",
+                            '</div>'
+                        ].join('\n'),
+                        suggestion: Handlebars.compile('<div class="searchholder"><div class="product_image_back serachbox-image" style="background:url(' + imageurlg + '{{file_name}});"></div><strong>{{title}}</strong></div>')
+                    }
+                });
 
 
             }, 500);
