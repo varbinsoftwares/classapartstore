@@ -155,28 +155,28 @@ foreach ($categorie_parent as $key => $value) {
                             $productvrnt = $product_attr_variant[$value['attribute']];
                             if (count($productvrnt) > 1) {
                                 ?>
-                                                                                                                                    <div class="col-md-6">
-                                                                                                                                        <ul class="more-option">
-                                                                                                                                            <li>
-                                                                                                                                                <div class="form-group">
-                                                                                                                                                    <div class="custom-select">
-                                                                                                                                                         COLOR 
-                                                                                                                                                        <p class="product_detail_attr"><?php echo $value['attribute']; ?></p>
-                                                                                                                                                        <select  class='select2'>
+                                                                                                                                                                            <div class="col-md-6">
+                                                                                                                                                                                <ul class="more-option">
+                                                                                                                                                                                    <li>
+                                                                                                                                                                                        <div class="form-group">
+                                                                                                                                                                                            <div class="custom-select">
+                                                                                                                                                                                                 COLOR 
+                                                                                                                                                                                                <p class="product_detail_attr"><?php echo $value['attribute']; ?></p>
+                                                                                                                                                                                                <select  class='select2'>
                                 <?php
                                 foreach ($product_attr_variant[$value['attribute']] as $kat => $vat) {
                                     ?>
                                     <?php //echo $value['attribute_value']; ?>
-                                                                                                                                                                                                    <option <?php echo $vat['attribute_value'] == $value['attribute_value'] ? 'selected' : ''; ?> value="<?php echo $vat['product_id']; ?>" ><?php echo $vat['attribute_value']; ?></option>
+                                                                                                                                                                                                                                                                <option <?php echo $vat['attribute_value'] == $value['attribute_value'] ? 'selected' : ''; ?> value="<?php echo $vat['product_id']; ?>" ><?php echo $vat['attribute_value']; ?></option>
                                     <?php
                                 }
                                 ?>
-                                                                                                                                                        </select>
-                                                                                                                                                    </div>
-                                                                                                                                                </div>
-                                                                                                                                            </li>
-                                                                                                                                        </ul>
-                                                                                                                                    </div>
+                                                                                                                                                                                                </select>
+                                                                                                                                                                                            </div>
+                                                                                                                                                                                        </div>
+                                                                                                                                                                                    </li>
+                                                                                                                                                                                </ul>
+                                                                                                                                                                            </div>
                                 <?php
                             }
                         }
@@ -215,6 +215,14 @@ foreach ($categorie_parent as $key => $value) {
                     <ul>
                         <li class="active"><a href="#highlights" data-toggle="tab" aria-expanded="false">Highlights</a></li>
                         <li><a href="#description" data-toggle="tab" aria-expanded="false">Description</a></li>
+                        <?php
+                        if ($product_details['video_link']) {
+                            ?>
+                            <li><a href="#videodescription" data-toggle="tab" aria-expanded="false">Video Description</a></li>
+
+                            <?php
+                        }
+                        ?>
                     </ul>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -240,6 +248,22 @@ foreach ($categorie_parent as $key => $value) {
                             </p>
                         </div>
 
+                        <?php
+                        if ($product_details['video_link']) {
+                            ?>
+                            <div class="tab-pane fade in spacification_product_details" id="videodescription">
+                                <p class="">
+                                <center>
+                                    <iframe width="800" height="400" src="<?php echo $product_details['video_link']; ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                </center>
+                                </p>
+                            </div>
+                            <?php
+                        }
+                        ?>
+
+
+
                     </div>
                 </div>
             </div>
@@ -258,7 +282,7 @@ foreach ($categorie_parent as $key => $value) {
 
                     <div class="product-box1">
                         <ul class="product-social">
-                            <li><a href="#" ng-click="addToCart(<?php echo $value['id'];?>, 1)"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                            <li><a href="#" ng-click="addToCart(<?php echo $value['id']; ?>, 1)"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
                         </ul>
                         <div class="product-img-holder">
                             <?php
