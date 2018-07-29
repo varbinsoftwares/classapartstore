@@ -76,7 +76,7 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
 
     var currencyfilter = $filter('currency');
 
-    $scope.globleCartData = {'total_quantity':0};//cart data
+    $scope.globleCartData = {'total_quantity': 0};//cart data
 
     //get cart data
     $scope.getCartData = function () {
@@ -211,12 +211,38 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
 
 
             $timeout(function () {
-                var mhref = '<a href="#" class="meanmenu-reveal cartopen" style="right: 35px;left: auto;text-align: center;text-indent: 0px;font-size: 18px;"><i class="fa fa-shopping-cart"></i><b class="cartquantity">'+$scope.globleCartData.total_quantity+'</b></a>';
+                var mhref = '<a href="#" class="meanmenu-reveal cartopen" style="right: 40px;left: auto;text-align: center;text-indent: 0px;font-size: 18px;"><i class="fa fa-shopping-cart"></i><b class="cartquantity">' + $scope.globleCartData.total_quantity + '</b></a>';
+                $(".logo-mobile-menu").after(mhref);
+                var mhref = '<a href="#" class="meanmenu-reveal search_open" style="right: 70px;left: auto;text-align: center;text-indent: 0px;font-size: 18px;"><i class="fa fa-search"></i></a>';
                 $(".logo-mobile-menu").after(mhref);
 
                 $(".cartopen").click(function () {
                     $('#mobileModel').modal('show')
                 })
+
+
+                $(".search_open").click(function () {
+                    $('#searchModel').modal('show');
+
+                    $('.typeahead').typeahead(null, {
+                        name: 'search-products',
+                        display: 'title',
+                        source: searchProducts,
+                        templates: {
+                            empty: [
+                                '<div class="empty-message">',
+                                "Can't Find!, Try Something Else",
+                                '</div>'
+                            ].join('\n'),
+                            suggestion: Handlebars.compile('<div class="searchholder"><div class="product_image_back serachbox-image" style="background:url(' + imageurlg + '{{file_name}});"></div><strong>{{title}}</strong></div>')
+                        }
+                    });
+
+                })
+
+
+
+
 
             }, 500);
 

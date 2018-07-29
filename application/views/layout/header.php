@@ -226,7 +226,7 @@
                                                             ?>
                                                             <li>
                                                                 <a href="<?php echo site_url("Account/profile"); ?>" style="text-transform: capitalize">
-                                                                    <i class="fa fa-user"></i> <?php echo $session_data['first_name'].' '.$session_data['last_name']; ?>
+                                                                    <i class="fa fa-user"></i> <?php echo $session_data['first_name'] . ' ' . $session_data['last_name']; ?>
                                                                     <span class="arrow"></span></a>
                                                             </li>
                                                             <li>
@@ -331,6 +331,25 @@
 
 
             <!--mobile model-->
+
+
+            <!--search_open-->
+            <div class="modal fade model_search" id="searchModel" tabindex="-1" role="dialog" aria-labelledby="searchModelLabel">
+                <div class="modal-dialog" role="document" style="margin-top: 60px;">
+                    <div class="modal-content mobile_model_search">
+                        <div class="modal-body">
+
+                            <form id="top-search-form1" action="<?php echo site_url('Product/ProductSearch'); ?>">                           
+                                <input type="text" name="keyword" class="search-input1 typeahead" placeholder="Search...." required="" style="width: 100%">
+                                <button type="submit" style="height: 0px;width: 0px;opacity: 0;"></button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
 
             <!-- Modal -->
             <div class="modal fade" id="mobileModel" tabindex="-1" role="dialog" aria-labelledby="mobileModelLabel">
