@@ -337,6 +337,10 @@
             <div class="modal fade model_search" id="searchModel" tabindex="-1" role="dialog" aria-labelledby="searchModelLabel">
                 <div class="modal-dialog" role="document" style="margin-top: 60px;">
                     <div class="modal-content mobile_model_search">
+                         <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                           
+                        </div>
                         <div class="modal-body">
 
                             <form id="top-search-form1" action="<?php echo site_url('Product/ProductSearch'); ?>">                           
